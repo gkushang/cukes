@@ -34,11 +34,10 @@ body {
 
     <h1 class="header-cukes" id="header">Cukes Repo</h1>
 
-	<h2 class="features-title-1">Features</h2>
+	<h2 class="features-title-1">Projects</h2>
 
-	<c:set var="url" value="${featureFileUrls}"> </c:set>
-    <c:forEach var="name" items="${featureFileNames}" varStatus="row">
-       <a href=${url.get(row.index)}>${name}</a> <br>
+    <c:forEach var="project" items="${projects}">
+       <a href=${(project.name.replace(" ", "-")).concat("/")}>${project.name}</a> <br>
     </c:forEach>
 
 </body>

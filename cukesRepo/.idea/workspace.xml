@@ -25,28 +25,43 @@
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386105807697" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/compiler.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386015855667" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/modules.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386015855667" ignored="false" />
-    <file path="/fragment.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386080709447" ignored="false" />
+    <file path="/fragment.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386122780409" ignored="false" />
     <file path="/HomePage.jsp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386046847811" ignored="false" />
     <file path="/web.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386020678197" ignored="false" />
     <file path="/a.dummy" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386047184859" ignored="false" />
     <file path="/.springBeans" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386017096559" ignored="false" />
     <file path="/*.regexp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386017637714" ignored="false" />
     <file path="/cukesrepo.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386017811878" ignored="false" />
-    <file path="/HomePageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386097719882" ignored="false" />
+    <file path="/HomePageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386121712314" ignored="false" />
     <file path="/routes.conf" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386019422481" ignored="false" />
     <file path="/context.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386033077679" ignored="false" />
     <file path="/FeatureFile.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386036191465" ignored="false" />
     <file path="/FeatureFileService.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386037670900" ignored="false" />
     <file path="/CukeRepository.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386047787348" ignored="false" />
-    <file path="/CukeService.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386097744491" ignored="false" />
+    <file path="/CukeService.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386123544254" ignored="false" />
     <file path="/FeaturesController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386048254449" ignored="false" />
-    <file path="/Feature.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386101122092" ignored="false" />
-    <file path="/FeatureService.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386097734586" ignored="false" />
-    <file path="/FeatureComponent.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386105292506" ignored="false" />
-    <file path="/FeatureRepository.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386097692460" ignored="false" />
-    <file path="/local.properties" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386088046329" ignored="false" />
+    <file path="/Feature.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386185866178" ignored="false" />
+    <file path="/FeatureService.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386181813048" ignored="false" />
+    <file path="/FeatureComponent.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386132242133" ignored="false" />
+    <file path="/FeatureRepository.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386186366635" ignored="false" />
+    <file path="/local.properties" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386122821904" ignored="false" />
     <file path="/ScenariosPageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386088125071" ignored="false" />
     <file path="/Scenario.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386100661421" ignored="false" />
+    <file path="$PROJECT_DIR$/../../ora/.idea/workspace.xml" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386187371252" ignored="false" />
+    <file path="/Features.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386119964587" ignored="false" />
+    <file path="/CukesRepo.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386120866401" ignored="false" />
+    <file path="/WelcomePage.jsp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386131589213" ignored="false" />
+    <file path="/ProjectRepository.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386184493833" ignored="false" />
+    <file path="/CukesRepository.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386126211444" ignored="false" />
+    <file path="/WelcomePageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386132466120" ignored="false" />
+    <file path="/CukesProjects.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386176694931" ignored="false" />
+    <file path="/Project.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386179751325" ignored="false" />
+    <file path="/ProjectPageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386132028605" ignored="false" />
+    <file path="/ProjectPage.jsp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386132840731" ignored="false" />
+    <file path="/ProjectsPageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386184581947" ignored="false" />
+    <file path="/ProjectsPage.jsp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386187127999" ignored="false" />
+    <file path="/FeaturesPageController.java" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386181829333" ignored="false" />
+    <file path="/FeaturesPage.jsp" changelist="7a7e8eb3-ad3d-419d-add2-a6c9d39a64c1" time="1386186943441" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,54 +125,18 @@
       <file leaf-file-name="FeatureComponent.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/component/FeatureComponent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="40" selection-start="724" selection-end="735" vertical-scroll-proportion="0.0">
+            <state line="73" column="40" selection-start="1986" selection-end="1990" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#414#425#0" expanded="true" />
+                <element signature="e#518#527#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Row.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Row.java">
+      <file leaf-file-name="ProjectsPageController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ProjectsPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="1" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#508#516#0" expanded="true" />
-                <element signature="e#638#654#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DeserializationContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.1.2/jackson-databind-2.1.2-sources.jar!/com/fasterxml/jackson/databind/DeserializationContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="607" column="40" selection-start="20282" selection-end="20282" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomePageController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/HomePageController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="61" selection-start="1392" selection-end="1392" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1261#1269#0" expanded="true" />
-                <element signature="e#1319#1327#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CukeService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/CukeService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="38" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
+            <state line="34" column="60" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,7 +147,7 @@
       <file leaf-file-name="FeatureService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/FeatureService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="41" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
+            <state line="22" column="30" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,21 +156,19 @@
       <file leaf-file-name="FeatureRepository.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/FeatureRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="43" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="41" column="40" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#540#549#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Feature.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Feature.java">
+      <file leaf-file-name="FeaturesPageController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/FeaturesPageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="21" selection-start="791" selection-end="791" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#822#832#0" expanded="true" />
-                <element signature="e#951#967#0" expanded="true" />
-              </folding>
+            <state line="38" column="54" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -199,24 +176,47 @@
       <file leaf-file-name="Scenario.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Scenario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="23" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+            <state line="38" column="28" selection-start="902" selection-end="907" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CukesProjects.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/CukesProjects.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="63" selection-start="433" selection-end="440" vertical-scroll-proportion="0.27738264">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Example.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Example.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="13" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#923#929#0" expanded="true" />
-                <element signature="e#1143#1159#0" expanded="true" />
+                <element signature="e#1096#1112#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Step.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Step.java">
+      <file leaf-file-name="Feature.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Feature.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="16" selection-start="293" selection-end="300" vertical-scroll-proportion="0.25604552">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#568#584#0" expanded="true" />
-              </folding>
+            <state line="34" column="36" selection-start="818" selection-end="827" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FeaturesPage.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/FeaturesPage.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="25" selection-start="776" selection-end="792" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -231,22 +231,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/CukeRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/CukesRepository.java" />
         <option value="$PROJECT_DIR$/config/local.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ScenariosPageController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/FeatureRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/HomePageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/WelcomePageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/CukesProjects.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Project.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/service/FeatureService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/service/CukeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Scenario.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Example.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/FeatureFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Row.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Tag.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ProjectHomePageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/ProjectRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ProjectsPageController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/ScenarioPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/FeaturesPageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Feature.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Step.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/component/FeatureComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/FeatureRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/ProjectsPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/FeaturesPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ScenariosPageController.java" />
       </list>
     </option>
   </component>
@@ -288,6 +288,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -379,10 +380,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -437,10 +434,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cukesrepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="repository" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -504,53 +497,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cukesRepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cukesRepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cukesrepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cukesRepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cukesRepo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -563,8 +511,6 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -574,8 +520,9 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.cukesrepo.repository" />
-      <recent name="com.cukesrepo.service" />
       <recent name="com.cukesrepo.controller" />
+      <recent name="com.cukesrepo.domain" />
+      <recent name="com.cukesrepo.service" />
       <recent name="com.cukesrepo.common.controller" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -621,19 +568,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -659,6 +593,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -769,13 +716,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.5875332" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41246685" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24964131" sideWeight="0.74403185" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25596818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -847,23 +794,113 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/local.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ScenariosPageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="17" selection-start="17" selection-end="17" vertical-scroll-proportion="0.0">
+        <state line="38" column="45" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/ProjectsPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="204" column="21" selection-start="6634" selection-end="6634" vertical-scroll-proportion="-13.48">
+        <state line="38" column="47" selection-start="604" selection-end="615" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="29" selection-start="431" selection-end="438" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#464#473#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/ProjectRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="16" selection-start="590" selection-end="590" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#726#735#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/CukeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="6" selection-start="193" selection-end="199" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Step.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="13" selection-start="334" selection-end="334" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ProjectsPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="60" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/FeatureRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="40" selection-start="1183" selection-end="1183" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#540#549#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/component/FeatureComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="40" selection-start="1986" selection-end="1990" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#518#527#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Feature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="36" selection-start="818" selection-end="827" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/FeaturesPage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="25" selection-start="776" selection-end="792" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/FeaturesPageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="54" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/FeatureService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Example.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="29" selection-end="29" vertical-scroll-proportion="0.0">
+        <state line="23" column="13" selection-start="670" selection-end="670" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1096#1112#0" expanded="true" />
@@ -871,114 +908,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Tag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="298" selection-end="298" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#492#508#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/ScenariosPageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1229" selection-end="1229" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/controller/HomePageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="61" selection-start="1392" selection-end="1392" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1261#1269#0" expanded="true" />
-            <element signature="e#1319#1327#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/CukeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="38" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/service/FeatureService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="667" selection-end="667" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/repository/FeatureRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="43" selection-start="1445" selection-end="1445" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.1.2/jackson-databind-2.1.2-sources.jar!/com/fasterxml/jackson/databind/DeserializationContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="607" column="40" selection-start="20282" selection-end="20282" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Feature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="21" selection-start="791" selection-end="791" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#822#832#0" expanded="true" />
-            <element signature="e#951#967#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/component/FeatureComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="40" selection-start="724" selection-end="735" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#414#425#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Row.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="1" selection-start="1486" selection-end="1486" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#508#516#0" expanded="true" />
-            <element signature="e#638#654#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Scenario.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="23" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#923#929#0" expanded="true" />
-            <element signature="e#1143#1159#0" expanded="true" />
-          </folding>
+        <state line="38" column="28" selection-start="902" selection-end="907" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/Step.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/cukesrepo/domain/CukesProjects.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="16" selection-start="293" selection-end="300" vertical-scroll-proportion="0.25604552">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#568#584#0" expanded="true" />
-          </folding>
+        <state line="18" column="63" selection-start="433" selection-end="440" vertical-scroll-proportion="0.27738264">
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,11 +1,12 @@
 package com.cukesrepo.service;
 
+import com.cukesrepo.domain.Feature;
 import com.cukesrepo.repository.FeatureRepository;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 @Service
 public class FeatureService
@@ -19,19 +20,15 @@ public class FeatureService
         _featureRepository = featureRepository;
     }
 
-    public TreeSet<FeatureFile> readFeatures()
+    public ArrayList<Feature> fetch(String projectName)
     {
-        return _featureRepository.readFeatures();
+        return _featureRepository.fetch(projectName);
     }
 
-    public TreeSet<FeatureFile> getFeatures()
+    public ArrayList<Feature> getFeatures()
     {
         return _featureRepository.getFeatures();
     }
 
-    public FeatureFile getFeatureByEndPoint(String featureEndPoint)
-    {
-        return _featureRepository.getFeatureByEndPoint(featureEndPoint);
-    }
 
 }

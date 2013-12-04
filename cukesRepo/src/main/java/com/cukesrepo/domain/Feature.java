@@ -19,7 +19,7 @@ import java.util.Map;
         "elements",
         "uri"
 })
-public class Feature {
+public class Feature implements Comparable{
 
     @JsonProperty("id")
     private String id;
@@ -117,4 +117,10 @@ public class Feature {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int compareTo(Object compareTo) {
+
+        Feature feature = (Feature) compareTo;
+        return getName().compareTo(feature.getName());
+    }
 }

@@ -1,51 +1,47 @@
 package com.cukesrepo.repository;
 
 import com.cukesrepo.component.FeatureComponent;
+import com.cukesrepo.domain.Feature;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 @Repository
 public class FeatureRepository
 {
 
     private final String FEATURE_FILE_PATH = "/src/test/resources/features";
-    private final String _directoryPath;
-    private TreeSet<FeatureFile> _features = new TreeSet<FeatureFile>();
+    private final ProjectRepository _projectRepository;
+    private ArrayList<Feature> _features = new ArrayList<Feature>();
     private FeatureComponent _featureComponent;
 
     @Autowired
-    public FeatureRepository(@Value("${project.base.path}") String projectBasePath, FeatureComponent featureComponent)
+    public FeatureRepository(FeatureComponent featureComponent
+    , ProjectRepository projectRepository)
     {
-        Validate.notNull(projectBasePath, "projectBasePath cannot be null.");
+
         Validate.notNull(featureComponent, "featureComponent cannot be null.");
+        Validate.notNull(projectRepository, "projectRepository cannot be null.");
 
         _featureComponent = featureComponent;
-        _directoryPath = projectBasePath + FEATURE_FILE_PATH;
+
+        _projectRepository = projectRepository;
 
     }
 
-    public TreeSet<FeatureFile>  getFeatures()
+    public ArrayList<Feature>  getFeatures()
     {
         return _features;
     }
 
 
-    public FeatureFile getFeatureByEndPoint(String featureEndPoint)
+    public ArrayList<Feature> fetch(String projectName)
     {
+        _features = _featureComponent.fetch(_projectRepository.getProjectByName(projectName).getRepositoryPath() + FEATURE_FILE_PATH);
 
-        for(FeatureFile feature: _features)
-            if(feature.getEndPoint().equalsIgnoreCase(featureEndPoint)) return feature;
-
-        return null;
-    }
-
-    public TreeSet<FeatureFile> readFeatures()
-    {
-        _features = _featureComponent.readFeatures(_directoryPath);
         return _features;
     }
+
 }

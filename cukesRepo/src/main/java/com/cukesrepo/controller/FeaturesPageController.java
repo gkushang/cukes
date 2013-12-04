@@ -1,6 +1,7 @@
 package com.cukesrepo.controller;
 
 import com.cukesrepo.service.CukeService;
+import com.cukesrepo.service.FeatureService;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,35 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
-public class ScenariosPageController {
+public class FeaturesPageController {
 
 
     private final CukeService _cukeService;
+    private final FeatureService _featureService;
 
     @Autowired
-    public ScenariosPageController(CukeService cukeService)
+    public FeaturesPageController(CukeService cukeService, FeatureService featureService)
     {
         Validate.notNull(cukeService, "cukeService cannot be null");
+        Validate.notNull(featureService, "featureService cannot be null");
+
         _cukeService = cukeService;
+        _featureService = featureService;
     }
 
-    @RequestMapping(value = "projects/{project}/{featureEndPoint}/", method = RequestMethod.GET)
-	protected ModelAndView scenariosPage
+    @RequestMapping(value = {"/projects/{project}","/projects/{project}/"}, method = RequestMethod.GET)
+    protected ModelAndView homePage
     (
-            @PathVariable String project,
-            HttpServletRequest request,
-            @PathVariable String featureEndPoint
+            @PathVariable String project
     )
     {
 
-        Validate.notNull(featureEndPoint, "featureEndPoint cannot be null");
-		ModelAndView model = new ModelAndView("ScenarioPage");
+        ModelAndView model = new ModelAndView("FeaturesPage");
 
-//		model.addObject("msg", _cukeService.getFeatureByEndPoint(featureEndPoint).getScenariosText());
-		return model;
-	}
+        model.addObject("features", _featureService.fetch(project));
+
+        return model;
+    }
 
 }

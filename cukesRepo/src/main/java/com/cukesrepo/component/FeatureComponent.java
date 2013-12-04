@@ -8,27 +8,24 @@ import gherkin.parser.Parser;
 import gherkin.util.FixJava;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
-import java.util.TreeSet;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 @Component
 public class FeatureComponent
 {
-    private TreeSet<Feature[]> features = new TreeSet<Feature[]>();
-    private String _name;
+    private ArrayList<Feature> features = new ArrayList<Feature>();
+    private final String FEATURE_FILE_EXTENSION = ".feature";
 
-    public FeatureComponent()
+    public ArrayList<Feature> fetch(String directoryPath)
     {
-
-    }
-
-
-    public TreeSet<Feature[]> readFeatures(String directoryPath)
-    {
+        features.clear();
         for(File file : _finder(directoryPath))
         {
-            String scenarioText = _read(file.getAbsolutePath());
-            features.add(new FeatureFile(_name, scenarioText));
+            features.add(_parseFeatureFile(file.getAbsolutePath()));
             _parseFeatureFile(file.getAbsolutePath());
         }
 
@@ -46,55 +43,13 @@ public class FeatureComponent
                         {
                             public boolean accept(File dir, String filename)
                             {
-                                return filename.endsWith(".feature");
+                                return filename.endsWith(FEATURE_FILE_EXTENSION);
                             }
                         }
                         );
     }
 
-    private String _read(String directoryPath) {
-
-        BufferedReader br = null;
-        try {
-
-            br = new BufferedReader(new FileReader(directoryPath));
-            StringBuilder sb = new StringBuilder();
-            String line;
-
-            while ((line = br.readLine()) != null)
-            {
-                sb.append(line);
-                sb.append("<br>");
-                _readFeatureTitle(line);
-            }
-
-            return sb.toString();
-
-        }catch (Exception e)
-        {
-            throw new RuntimeException("Error Finding/Reading File : " + directoryPath, e);
-
-        } finally
-        {
-            try
-            {
-                br.close();
-
-            } catch (Exception e)
-            {
-                throw new RuntimeException("Error Closing File : " + directoryPath, e);
-            }
-        }
-    }
-
-    private void _readFeatureTitle(String line)
-    {
-        if(line.contains("Feature:"))
-            _name = line.split("Feature:")[1].trim();
-
-    }
-
-    private void _parseFeatureFile(String path)
+    private Feature _parseFeatureFile(String path)
     {
 
         try
@@ -116,7 +71,7 @@ public class FeatureComponent
 
             ObjectMapper mapper = new ObjectMapper();
 
-            features.add(mapper.readValue(json.toString(), Feature[].class));
+            return mapper.readValue(json.toString(), Feature[].class)[0];
 
 
         } catch (Exception e)
