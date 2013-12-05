@@ -7,12 +7,6 @@ import javax.servlet.jsp.*;
 public final class FeaturesPage_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
-static private org.apache.jasper.runtime.ProtectedFunctionMapper _jspx_fnmap_0;
-
-static {
-  _jspx_fnmap_0= org.apache.jasper.runtime.ProtectedFunctionMapper.getMapForFunction("fn:length", org.apache.taglibs.standard.functions.Functions.class, "length", new Class[] {java.lang.Object.class});
-}
-
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
   private static java.util.List<String> _jspx_dependants;
@@ -89,6 +83,14 @@ static {
       out.write("\tfont-size: 24px;\r\n");
       out.write("}\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write(".number-of-scenarios {\r\n");
+      out.write("\tcolor: darkblue;\r\n");
+      out.write("\ttext-align: left;\r\n");
+      out.write("\tfont-family: Open Sans;\r\n");
+      out.write("\tfont-size: 16px;\r\n");
+      out.write("}\r\n");
+      out.write("\r\n");
       out.write("</style>\r\n");
       out.write("\r\n");
       out.write("<body>\r\n");
@@ -97,10 +99,16 @@ static {
       out.write("\r\n");
       out.write("\t<h2 class=\"features-title-1\">Features</h2>\r\n");
       out.write("\r\n");
-      out.write("    ");
+      out.write("    <table>\r\n");
+      out.write("        ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\r\n");
+      out.write("    </table>\r\n");
+      out.write("\r\n");
+      out.write("    <h2 class=\"number-of-scenarios\">Total Scenarios: ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${totalScenarios}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h2>\r\n");
       out.write("\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
@@ -133,15 +141,16 @@ static {
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("       <a href=");
+          out.write("            <tr> <a href=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${feature.id.concat(\"/\")}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${feature.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</a>\r\n");
-          out.write("       <span>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${fn:length(feature.scenarios)}", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0));
-          out.write("</span>  <br>\r\n");
-          out.write("    ");
+          out.write("  </tr>\r\n");
+          out.write("            <tr class=\"cell\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${feature.numberOfScenarios}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span>  </td>\r\n");
+          out.write("            <br>\r\n");
+          out.write("        ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
