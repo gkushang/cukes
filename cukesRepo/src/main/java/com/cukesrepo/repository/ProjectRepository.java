@@ -3,6 +3,8 @@ package com.cukesrepo.repository;
 
 import com.cukesrepo.domain.CukesProjects;
 import com.cukesrepo.domain.Project;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,11 +13,19 @@ import java.util.ArrayList;
 public class ProjectRepository
 {
 
+    private final String _workspace;
+    private final String _project1Name;
+    private final String _project2Name;
     private CukesProjects _cukesProjects;
 
-    public ProjectRepository()
+    @Autowired
+    public ProjectRepository(@Value("${project.workspace}") String workspace, @Value("${project.one}") String project1Name,
+                             @Value("${project.two}") String project2Name)
     {
          _cukesProjects = new CukesProjects();
+        _workspace = workspace;
+        _project1Name =project1Name;
+        _project2Name=project2Name;
         _setupDefaultProjects();
     }
 
@@ -34,12 +44,12 @@ public class ProjectRepository
 
         ArrayList<Project> projects = new ArrayList<Project>();
         Project oraTest = new Project();
-        oraTest.setName("oraTest");
-        oraTest.setRepositoryPath("/Users/kugajjar/Documents/workspace/oraTest");
+        oraTest.setName(_project1Name);
+        oraTest.setRepositoryPath(_workspace + "/" + _project1Name);
 
         Project campaignManagerTest = new Project();
-        campaignManagerTest.setName("campaignManagerTest");
-        campaignManagerTest.setRepositoryPath("/Users/kugajjar/Documents/workspace/campaignManagerTest");
+        campaignManagerTest.setName(_project2Name);
+        campaignManagerTest.setRepositoryPath(_workspace + "/" + _project2Name);
 
         projects.add(oraTest);
         projects.add(campaignManagerTest);
