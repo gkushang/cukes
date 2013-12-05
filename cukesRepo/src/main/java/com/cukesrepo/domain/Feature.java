@@ -19,7 +19,7 @@ import java.util.Map;
         "elements",
         "uri"
 })
-public class Feature implements Comparable{
+public class Feature {
 
     @JsonProperty("id")
     private String id;
@@ -38,6 +38,8 @@ public class Feature implements Comparable{
 
     int numberOfScenarios = 0;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    int numberOfApprovedScenarios = 0;
 
     @JsonProperty("id")
     public String getId() {
@@ -119,25 +121,24 @@ public class Feature implements Comparable{
         this.additionalProperties.put(name, value);
     }
 
-    @Override
-    public int compareTo(Object compareTo) {
-
-        Feature feature = (Feature) compareTo;
-        return getName().compareTo(feature.getName());
+    public void setNumberOfScenarios(int numberOfScenarios)
+    {
+        this.numberOfScenarios = numberOfScenarios;
     }
 
     public int getNumberOfScenarios()
     {
-        numberOfScenarios = 0;
-        for(Scenario scenario : scenarios)
-        {
-            numberOfScenarios++;
-
-            for(Example example : scenario.getExamples())
-               numberOfScenarios += example.getRows().size() - 2;
-
-        }
-
-        return numberOfScenarios;
+        return this.numberOfScenarios;
     }
+
+    public void setNumberOfApprovedScenarios(int numberOfApprovedScenarios)
+    {
+        this.numberOfApprovedScenarios = numberOfApprovedScenarios;
+    }
+
+    public int getNumberOfApprovedScenarios()
+    {
+        return numberOfApprovedScenarios;
+    }
+
 }

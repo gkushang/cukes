@@ -23,8 +23,4 @@ public class ProjectService
         return _projectRepository.getProjects();
     }
 
-    public Project getProjectByName(String projectName)
-    {
-        return _projectRepository.getProjectByName(projectName).get();
-    }
 }

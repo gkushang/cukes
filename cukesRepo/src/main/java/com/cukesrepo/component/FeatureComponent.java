@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import gherkin.formatter.JSONFormatter;
 import gherkin.parser.Parser;
 import gherkin.util.FixJava;
+import org.apache.commons.lang.Validate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -17,21 +19,39 @@ import java.util.ArrayList;
 @Component
 public class FeatureComponent
 {
+    private final ScenarioComponent _scenarioComponent;
     private ArrayList<Feature> features = new ArrayList<Feature>();
     private final String FEATURE_FILE_EXTENSION = ".feature";
 
+    @Autowired
+    public FeatureComponent(ScenarioComponent scenarioComponent)
+    {
+        Validate.notNull(scenarioComponent, "scenarioComponent cannot be null");
+
+        _scenarioComponent = scenarioComponent;
+    }
+
+    //this can be replaced by gitHub repo
     public ArrayList<Feature> fetch(String directoryPath)
     {
         features.clear();
         for(File file : _finder(directoryPath))
         {
-            features.add(_parseFeatureFile(file.getAbsolutePath()));
+            Feature feature = _parseFeatureFile(file.getAbsolutePath());
+            feature = processScenarios(feature);
+            features.add(feature);
             _parseFeatureFile(file.getAbsolutePath());
         }
 
         return features;
     }
 
+    public Feature processScenarios(Feature feature)
+    {
+        feature.setNumberOfScenarios(_scenarioComponent.getNumberOfScenarios(feature));
+        feature.setNumberOfApprovedScenarios(_scenarioComponent.getNumberOfApprovedScenarios(feature));
+        return  feature;
+    }
 
     private File[] _finder(String directoryPath)
     {

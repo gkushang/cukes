@@ -43,6 +43,8 @@ public class Scenario {
     private String type;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    private Boolean _isApproved = false;
+
     @JsonProperty("id")
     public String getId() {
         return id;
@@ -143,4 +145,11 @@ public class Scenario {
         this.additionalProperties.put(name, value);
     }
 
+    public Boolean isApproved() {
+        return _isApproved;
+    }
+
+    public void setIsApproved(Boolean _isApproved) {
+        this._isApproved = _isApproved;
+    }
 }
