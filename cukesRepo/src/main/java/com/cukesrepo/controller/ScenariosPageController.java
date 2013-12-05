@@ -1,7 +1,9 @@
 package com.cukesrepo.controller;
 
+import com.cukesrepo.domain.Feature;
 import com.cukesrepo.service.FeatureService;
 import com.cukesrepo.service.ScenarioService;
+import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,9 +38,18 @@ public class ScenariosPageController {
 
         Validate.notNull(featureId, "featureId cannot be null");
 
+        Optional<Feature> feature = _featureService.getFeatureById(featureId);
+
 		ModelAndView model = new ModelAndView("ScenarioPage");
-        model.addObject("feature", _featureService.getFeatureById(featureId));
-        model.addObject("scenarios", _scenarioService.getScenario(_featureService.getFeatureById(featureId)));
+
+        if(feature.isPresent())
+        {
+            model.addObject("feature", feature.get());
+            model.addObject("scenarios", _scenarioService.getScenariosByFeature(feature.get()));
+        }else
+        {
+            //add error scenarios here if feature not found
+        }
 
 		return model;
 	}

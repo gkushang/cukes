@@ -3,6 +3,7 @@ package com.cukesrepo.repository;
 
 import com.cukesrepo.domain.Projects;
 import com.cukesrepo.domain.Project;
+import com.google.common.base.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
@@ -57,15 +58,15 @@ public class ProjectRepository
         setProjects(projects);
     }
 
-    public Project getProjectByName(String projectName)
+    public Optional<Project> getProjectByName(String projectName)
     {
         for(Project project : getProjects())
         {
             if(project.getName().equalsIgnoreCase(projectName))
-                return project;
+                return Optional.fromNullable(project);
         }
 
-        return null;
+        return Optional.absent();
     }
 }
 

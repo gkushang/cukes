@@ -17,13 +17,15 @@ public class ScenarioService
     @Autowired
     public ScenarioService(FeatureService featureService)
     {
-        Validate.notNull(featureService, "featureService cannot be null.");
+        Validate.notNull(featureService, "featureService cannot be null");
 
         _featureService = featureService;
     }
 
-    public List<Scenario> getScenario(Feature feature)
+    public List<Scenario> getScenariosByFeature(Feature feature)
     {
+        Validate.notNull(feature, "feature cannot be empty/null");
+
         return feature.getScenarios();
     }
 

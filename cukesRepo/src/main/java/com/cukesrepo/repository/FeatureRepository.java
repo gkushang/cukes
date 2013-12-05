@@ -39,7 +39,7 @@ public class FeatureRepository
 
     public ArrayList<Feature> fetch(String projectName)
     {
-        _features = _featureComponent.fetch(_projectRepository.getProjectByName(projectName).getRepositoryPath() + FEATURE_FILE_PATH);
+        _features = _featureComponent.fetch(_projectRepository.getProjectByName(projectName).get().getRepositoryPath() + FEATURE_FILE_PATH);
 
         return _features;
     }

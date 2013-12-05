@@ -1,6 +1,6 @@
 package com.cukesrepo.controller;
 
-import com.cukesrepo.repository.ProjectRepository;
+import com.cukesrepo.service.ProjectService;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,14 +12,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProjectsPageController {
 
 
-    private final ProjectRepository _projectRepository;
+    private final ProjectService _projectService;
 
     @Autowired
-    public ProjectsPageController(ProjectRepository projectRepository)
+    public ProjectsPageController(ProjectService projectService)
     {
-        Validate.notNull(projectRepository, "projectRepository cannot be null");
+        Validate.notNull(projectService, "projectService cannot be null");
 
-        _projectRepository = projectRepository;
+        _projectService = projectService;
 
     }
 
@@ -32,7 +32,7 @@ public class ProjectsPageController {
 
         ModelAndView model = new ModelAndView("ProjectsPage");
 
-        model.addObject("projects", _projectRepository.getProjects());
+        model.addObject("projects", _projectService.getProjects());
 
         return model;
     }
