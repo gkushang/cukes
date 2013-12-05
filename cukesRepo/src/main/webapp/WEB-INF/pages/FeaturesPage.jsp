@@ -30,6 +30,14 @@ body {
 	font-size: 24px;
 }
 
+
+.number-of-scenarios {
+	color: darkblue;
+	text-align: left;
+	font-family: Open Sans;
+	font-size: 16px;
+}
+
 </style>
 
 <body>
@@ -38,10 +46,15 @@ body {
 
 	<h2 class="features-title-1">Features</h2>
 
-    <c:forEach var="feature" items="${features}">
-       <a href=${feature.id.concat("/")}>${feature.name}</a>
-       <span>${fn:length(feature.scenarios)}</span>  <br>
-    </c:forEach>
+    <table>
+        <c:forEach var="feature" items="${features}">
+            <tr> <a href=${feature.id.concat("/")}>${feature.name}  </tr>
+            <tr class="cell">${feature.numberOfScenarios}</span>  </td>
+            <br>
+        </c:forEach>
+    </table>
+
+    <h2 class="number-of-scenarios">Total Scenarios: ${totalScenarios}</h2>
 
 </body>
 </html>

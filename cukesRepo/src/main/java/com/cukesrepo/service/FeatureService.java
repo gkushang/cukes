@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class FeatureService
 {
     private FeatureRepository _featureRepository;
+    private int _totalNumberOfScenarios = 0;
 
     @Autowired
     public FeatureService(FeatureRepository featureRepository)
@@ -30,5 +31,28 @@ public class FeatureService
         return _featureRepository.getFeatures();
     }
 
+    public Feature getFeatureById(String featureId)
+    {
+
+        for(Feature feature : _featureRepository.getFeatures())
+        {
+            if(feature.getId().equalsIgnoreCase(featureId))
+                return feature;
+        }
+
+        return null;
+    }
+
+    public int getTotalNumberOfScenarios()
+    {
+
+        _totalNumberOfScenarios = 0;
+        for(Feature feature : _featureRepository.getFeatures())
+        {
+            _totalNumberOfScenarios += feature.getNumberOfScenarios();
+        }
+
+        return _totalNumberOfScenarios;
+    }
 
 }

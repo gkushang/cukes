@@ -23,7 +23,7 @@ public class ProjectsPageController {
 
     }
 
-    @RequestMapping(value = "/projects", method = RequestMethod.GET)
+    @RequestMapping(value = "/projects/", method = RequestMethod.GET)
     protected ModelAndView projectsPage
             (
 

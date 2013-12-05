@@ -1,7 +1,7 @@
 package com.cukesrepo.repository;
 
 
-import com.cukesrepo.domain.CukesProjects;
+import com.cukesrepo.domain.Projects;
 import com.cukesrepo.domain.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +16,13 @@ public class ProjectRepository
     private final String _workspace;
     private final String _project1Name;
     private final String _project2Name;
-    private CukesProjects _cukesProjects;
+    private Projects _cukesProjects;
 
     @Autowired
     public ProjectRepository(@Value("${project.workspace}") String workspace, @Value("${project.one}") String project1Name,
                              @Value("${project.two}") String project2Name)
     {
-         _cukesProjects = new CukesProjects();
+         _cukesProjects = new Projects();
         _workspace = workspace;
         _project1Name =project1Name;
         _project2Name=project2Name;

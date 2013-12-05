@@ -13,7 +13,7 @@ import java.util.Map;
       "projects"
 })
 
-public class CukesProjects {
+public class Projects {
 
     @JsonProperty("projects")
     private ArrayList<Project> projects = new ArrayList<Project>();

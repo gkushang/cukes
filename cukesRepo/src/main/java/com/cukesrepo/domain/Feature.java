@@ -35,6 +35,8 @@ public class Feature implements Comparable{
     private List<Scenario> scenarios = new ArrayList<Scenario>();
     @JsonProperty("uri")
     private String uri;
+
+    int numberOfScenarios = 0;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("id")
@@ -122,5 +124,20 @@ public class Feature implements Comparable{
 
         Feature feature = (Feature) compareTo;
         return getName().compareTo(feature.getName());
+    }
+
+    public int getNumberOfScenarios()
+    {
+        numberOfScenarios = 0;
+        for(Scenario scenario : scenarios)
+        {
+            numberOfScenarios++;
+
+            for(Example example : scenario.getExamples())
+               numberOfScenarios += example.getRows().size() - 2;
+
+        }
+
+        return numberOfScenarios;
     }
 }
