@@ -1,20 +1,19 @@
-var project.one = "oraTest";
-var project.two = "campaignManagerTest";
-var workspace =  "/Users/kugajjar/Documents/workspace/";"
+var projectone = "oraTest";
+var projecttwo = "campaignManagerTest";
+var workspace =  "/Users/kugajjar/Documents/workspace/";
 
-var projects = [
-                    	{
+var projects = [   	{
                     		"_class" : "com.cukesrepo.domain.Project",
-                    		"name" : project.one,
-                    		"repositorypath" : workspace+project.one
+                    		"name" : projectone,
+                    		"repositorypath" : workspace+projectone
                     	},
                     	{
                     		"_class" : "com.cukesrepo.domain.Project",
-                    		"name" : project.two,
-                    		"repositorypath" : workspace+project.two
+                    		"name" : projecttwo,
+                    		"repositorypath" : workspace+projecttwo
                     	}
-                    ]
+                ]
 
-db.project.remove({"name" : project.one});
-db.project.remove({"name" : project.two});
-db.project.insertAll(projects);
+db.project.remove({"name" : projectone});
+db.project.remove({"name" : projecttwo});
+db.project.insert(projects);
