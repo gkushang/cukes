@@ -38,3 +38,26 @@ The prefered IDE is IntelliJ IDEA 12. Dependency and project setup sections are 
 
 <br/>
 
+### Running the project in EclipseIDE
+
+1. Click Help and then Install New Software...
+
+2. In the Work With field, enter http://run-jetty-run.googlecode.com/svn/trunk/updatesite
+
+3. Select 'RunJettyRun' from the dialog box, and continue through installation steps
+
+4. With the project loaded in Eclipse, right click on the project and select Run As/ Run Configuration...
+
+5. Click the Add config button and select Jetty WebApp
+
+6. In the Web Application section, input the port you wish to run on and populate the context field with '/'
+
+7. In the JVM options, enter '-Denv.props.path=[path/to/your/]/local.properties
+
+8. Click Run
+
+9. In a browser, navigate to http://localhost:[port_from_step_6]/projects/ and you should see the projects page if everything is working properly
+
+</br>
+
+
