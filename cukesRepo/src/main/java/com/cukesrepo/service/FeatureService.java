@@ -36,26 +36,25 @@ public class FeatureService
 
     }
 
-    public Optional<Feature> getFeatureById(String featureId)
+    public Optional<Feature> getFeatureById(String projectName, String featureId)
     {
 
         Validate.notEmpty(featureId, "featureId cannot be empty or null");
 
-        for(Feature feature : _featureRepository.getFeatures())
+        Optional<Feature> feature = _featureRepository.getFeatureById(projectName, featureId);
+
+        if(feature.isPresent())
         {
-            if(feature.getId().equalsIgnoreCase(featureId))
-            {
-                LOG.info("Feature found by id '{}'", featureId);
-                return Optional.of(feature);
-            }
+            LOG.error("Feature found by id '{}'", featureId);
+            return feature;
         }
 
-        LOG.error("Feature not found by id '{}'", featureId);
+        else LOG.error("Feature not found by id '{}'", featureId);
 
         return Optional.absent();
     }
 
-    public void approveScenario(String featureId, String scenarioId)
+    public void approveScenario(String projectName, String featureId, String scenarioId)
     {
         //TODO - Approve scenario
 
