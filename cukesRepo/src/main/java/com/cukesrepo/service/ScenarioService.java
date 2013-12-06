@@ -29,4 +29,8 @@ public class ScenarioService
         return feature.getScenarios();
     }
 
+    public void approveScenario(String featureId, String scenarioId)
+    {
+        _featureService.approveScenario(featureId, scenarioId);
+    }
 }
