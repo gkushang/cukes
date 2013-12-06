@@ -43,7 +43,7 @@ The preferred IDE is IntelliJ IDEA 12. Dependency and project setup sections are
 
 1. On Terminal, go to : ***/workspace/cukes/cukesRepo/src/main/resources/db*** Folder
 
-2. Run command: ***mongo localhost:27017/test insertProjects.js***
+2. Run command: ***mongo localhost:27017/CUKE insertProjects.js***
 
 
 ### dependencies
