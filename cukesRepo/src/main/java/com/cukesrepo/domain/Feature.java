@@ -26,6 +26,7 @@ import java.util.Map;
 public class Feature {
 
     public static final String PROJECTNAME = "projectname";
+    public static final String ID = "_id";
 
     @Field(PROJECTNAME)
     private String projectName;
@@ -37,7 +38,7 @@ public class Feature {
     private int totalApprovedScenarios = 0;
 
     @JsonProperty("id")
-    @Field("id")
+    @Field(ID)
     private String id;
 
     @JsonProperty("description")
