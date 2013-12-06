@@ -32,7 +32,6 @@ public class FeaturesPageController {
         ModelAndView model = new ModelAndView("FeaturesPage");
 
         model.addObject("features", _featureService.fetch(project));
-        model.addObject("totalScenarios", _featureService.getTotalNumberOfScenarios());
 
         return model;
     }
