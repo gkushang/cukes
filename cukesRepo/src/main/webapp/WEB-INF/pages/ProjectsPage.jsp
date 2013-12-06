@@ -37,7 +37,7 @@ body {
 	<h2 class="features-title-1">Projects</h2>
 
     <c:forEach var="project" items="${projects}">
-       <a href=${(project.name.replace(" ", "-")).concat("/")}>${project.name}</a> <br>
+       <a href=${project.name}/>${project.name}</a> <br>
     </c:forEach>
 
 </body>
