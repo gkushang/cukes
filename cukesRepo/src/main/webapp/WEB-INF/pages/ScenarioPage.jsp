@@ -92,6 +92,7 @@ body {
 
 
 
+        <c:set var="feature" value="${feature}"/>
         <h2 class="features-title-1">Feature: ${feature.name}</h2>
 
         <c:forEach var="scenario" items="${scenarios}">
