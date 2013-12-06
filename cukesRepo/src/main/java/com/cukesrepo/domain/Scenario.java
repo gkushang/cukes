@@ -21,6 +21,7 @@ import java.util.Map;
         "examples",
         "type"
 })
+
 public class Scenario {
 
     @JsonProperty("id")
