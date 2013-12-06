@@ -30,7 +30,7 @@ The preferred IDE is IntelliJ IDEA 12. Dependency and project setup sections are
     5.1. Set the following VM Options:
 
         -Djetty.port=[port]
-        -Denv.props.path=[tokens file path]
+        -Denv.props.path=[properties file path]
 
     5.2. Set the JRE to v1.7
 
