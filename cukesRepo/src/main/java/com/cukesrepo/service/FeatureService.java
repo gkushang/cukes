@@ -6,6 +6,7 @@ import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 
 @Service
@@ -13,6 +14,7 @@ public class FeatureService
 {
     private FeatureRepository _featureRepository;
     private int _totalNumberOfScenarios = 0;
+    private EmailService sendEmail;
 
     @Autowired
     public FeatureService(FeatureRepository featureRepository)
@@ -54,5 +56,9 @@ public class FeatureService
 
         return _totalNumberOfScenarios;
     }
+    public void sendEmail() throws MessagingException {
 
+        sendEmail=new EmailService();
+        sendEmail.send();
+        }
 }

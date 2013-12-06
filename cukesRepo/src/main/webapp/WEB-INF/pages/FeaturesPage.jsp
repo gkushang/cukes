@@ -3,7 +3,7 @@
 
 <html>
 <title>Cukes Repo</title>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <style>
 body {
 	background-color: #F6F7F8;
@@ -40,21 +40,45 @@ body {
 
 </style>
 
+<script>
+function email()
+{
+
+    $.ajax({
+        url: "/service/email",
+        context: "something"
+        }).done(function(data) {
+            alert(data);
+    });
+
+}
+</script>
+
+
+
+
 <body>
 
     <h1 class="header-cukes" id="header">Cukes Repo</h1>
 
 	<h2 class="features-title-1">Features</h2>
 
-    <table>
         <c:forEach var="feature" items="${features}">
-            <tr> <a href=${feature.id.concat("/")}>${feature.name}  </tr>
-            <tr class="cell">${feature.numberOfScenarios}</span>  </td>
+            <a href=${feature.id.concat("/")}>${feature.name} </a>
+            <span class="cell">${feature.numberOfScenarios}</span>
             <br>
         </c:forEach>
-    </table>
 
+</body>
+
+<body>
     <h2 class="number-of-scenarios">Total Scenarios: ${totalScenarios}</h2>
+
+      <input type="button" name="email" value="submit" onClick="email()"></input>
+
+       <input type="button" name="email" value="Approve" onClick="email()"></input>
+
+
 
 </body>
 </html>
