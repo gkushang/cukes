@@ -8,6 +8,8 @@ import gherkin.formatter.JSONFormatter;
 import gherkin.parser.Parser;
 import gherkin.util.FixJava;
 import org.apache.commons.lang.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -25,6 +27,8 @@ public class GitComponent
     private final String FEATURE_FILE_EXTENSION = ".feature";
     private final String _featureFilePath;
     private final FeatureComponent _featureComponent;
+
+    private static final Logger LOG = LoggerFactory.getLogger(GitComponent.class);
 
     @Autowired
     public GitComponent
@@ -54,6 +58,8 @@ public class GitComponent
             features.add(_featureComponent.processFeature(project, feature));
 
         }
+
+        LOG.info("Fetched '{}' feature(s) from Git/Local repository", features.size());
 
         return features;
     }
