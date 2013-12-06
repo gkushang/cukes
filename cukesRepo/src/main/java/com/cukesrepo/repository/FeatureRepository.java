@@ -1,6 +1,7 @@
 package com.cukesrepo.repository;
 
 import com.cukesrepo.domain.Feature;
+import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,4 +79,10 @@ public class FeatureRepository
 
     }
 
+    public Optional<Feature> getFeatureById(String projectName, String id)
+    {
+        Query query = new Query((Criteria.where(Feature.ID).is(id)).and(Feature.PROJECTNAME).is(projectName));
+
+        return Optional.fromNullable(_mongoTemplate.findOne(query, Feature.class));
+    }
 }
