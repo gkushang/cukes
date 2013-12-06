@@ -1,46 +1,42 @@
 package com.cukesrepo.component;
 
 import com.cukesrepo.domain.Example;
-import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.Scenario;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class ScenarioComponent
 {
 
-    public void approveScenario(Scenario scenario)
-    {
-        scenario.setIsApproved(true);
+    private int _numberOfScenarios;
+    private int _numberOfApprovedScenarios;
+
+    public int getNumberOfApprovedScenarios() {
+        return _numberOfApprovedScenarios;
     }
 
-    public int getNumberOfScenarios(Feature feature)
-    {
-        int numberOfScenarios = 0;
+    public int getNumberOfScenarios() {
+        return _numberOfScenarios;
+    }
 
-        for(Scenario scenario : feature.getScenarios())
+    public void processScenarios(List<Scenario> scenarios)
+    {
+        _numberOfScenarios = 0;
+        _numberOfApprovedScenarios = 0;
+
+        for(Scenario scenario : scenarios)
         {
-            numberOfScenarios++;
+            _numberOfScenarios++;
 
             for(Example example : scenario.getExamples())
-                numberOfScenarios += example.getRows().size() - 2;
-        }
+                _numberOfScenarios += example.getRows().size() - 2;
 
-        return numberOfScenarios;
-    }
-
-    public int getNumberOfApprovedScenarios(Feature feature)
-    {
-
-        int numberOfApprovedScenarios = 0;
-
-        for(Scenario scenario : feature.getScenarios())
-        {
             if(scenario.isApproved())
-                numberOfApprovedScenarios++;
+                _numberOfApprovedScenarios++;
         }
 
-        return numberOfApprovedScenarios;
-
     }
+
 }
