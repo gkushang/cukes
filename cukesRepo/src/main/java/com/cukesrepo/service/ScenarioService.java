@@ -29,11 +29,12 @@ public class ScenarioService
         return feature.getScenarios();
     }
 
-    public void approveScenario(String featureId, String scenarioId)
+    public void approveScenario(String projectName, String featureId, String scenarioId)
     {
+        Validate.notEmpty(projectName, "projectName cannot be empty/null");
         Validate.notEmpty(featureId, "feature cannot be empty/null");
         Validate.notEmpty(scenarioId, "scenarioId cannot be empty/null");
 
-        _featureService.approveScenario(featureId, scenarioId);
+        _featureService.approveScenario(projectName, featureId, scenarioId);
     }
 }
