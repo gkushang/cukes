@@ -22,16 +22,16 @@ public class FeaturesPageController {
         _featureService = featureService;
     }
 
-    @RequestMapping(value = {"/projects/{project}/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/projects/{projectName}/"}, method = RequestMethod.GET)
     protected ModelAndView featuresPage
     (
-            @PathVariable String project
+            @PathVariable String projectName
     )
     {
 
         ModelAndView model = new ModelAndView("FeaturesPage");
 
-        model.addObject("features", _featureService.fetch(project));
+        model.addObject("features", _featureService.fetch(projectName));
 
         return model;
     }
