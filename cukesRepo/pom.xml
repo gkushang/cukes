@@ -265,7 +265,7 @@
 
     <build>
 
-        <finalName>ORA</finalName>
+        <finalName>CUKE</finalName>
 
         <plugins>
 
