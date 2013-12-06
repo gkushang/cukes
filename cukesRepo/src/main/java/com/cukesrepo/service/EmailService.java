@@ -45,7 +45,7 @@ public  class EmailService {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress("cuckesrepo@gmail.com"));
         message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("kugajjar@paypal.com"));
+                InternetAddress.parse("maduraisamy@paypal.com"));
         message.setSubject("Testing Subject");
         message.setText("Dear Kushang,"
                 + "\n\n No spam to my email, please!");
@@ -58,9 +58,7 @@ public  class EmailService {
         throw new RuntimeException(e);
     }
     }
-
-    
-
-
 }
+
+
 
