@@ -1,6 +1,8 @@
 package com.cukesrepo.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.annotation.Generated;
 import java.util.ArrayList;
@@ -19,27 +21,50 @@ import java.util.Map;
         "elements",
         "uri"
 })
+
+@Document(collection = "feature")
 public class Feature {
 
+    public static final String PROJECTNAME = "projectname";
+    public static final String ID = "_id";
+
+    @Field(PROJECTNAME)
+    private String projectName;
+
+    @Field("totalscenarios")
+    private int totalScenarios = 0;
+
+    @Field("totalapprovedscenarios")
+    private int totalApprovedScenarios = 0;
+
     @JsonProperty("id")
+    @Field(ID)
     private String id;
+
     @JsonProperty("description")
+    @Field("description")
     private String description;
+
+    @Field("name")
     @JsonProperty("name")
     private String name;
+
     @JsonProperty("keyword")
+    @Field("keyword")
     private String keyword;
+
     @JsonProperty("line")
     private Integer line;
+
+    @Field("scenarios")
     @JsonProperty("elements")
     private List<Scenario> scenarios = new ArrayList<Scenario>();
+
     @JsonProperty("uri")
     private String uri;
 
-    int numberOfScenarios = 0;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    int numberOfApprovedScenarios = 0;
 
     @JsonProperty("id")
     public String getId() {
@@ -121,24 +146,32 @@ public class Feature {
         this.additionalProperties.put(name, value);
     }
 
-    public void setNumberOfScenarios(int numberOfScenarios)
+    public void setTotalScenarios(int totalScenarios)
     {
-        this.numberOfScenarios = numberOfScenarios;
+        this.totalScenarios = totalScenarios;
     }
 
-    public int getNumberOfScenarios()
+    public int getTotalScenarios()
     {
-        return this.numberOfScenarios;
+        return this.totalScenarios;
     }
 
-    public void setNumberOfApprovedScenarios(int numberOfApprovedScenarios)
+    public void setTotalApprovedScenarios(int totalApprovedScenarios)
     {
-        this.numberOfApprovedScenarios = numberOfApprovedScenarios;
+        this.totalApprovedScenarios = totalApprovedScenarios;
     }
 
-    public int getNumberOfApprovedScenarios()
+    public int getTotalApprovedScenarios()
     {
-        return numberOfApprovedScenarios;
+        return totalApprovedScenarios;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
 }

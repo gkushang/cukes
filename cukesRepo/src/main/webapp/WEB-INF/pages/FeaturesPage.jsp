@@ -49,8 +49,8 @@ body {
     <table>
         <c:forEach var="feature" items="${features}">
             <tr> <a href=${feature.id}/>${feature.name}  </tr>
-            <tr class="cell">${feature.numberOfScenarios}</span>  </td>
-            <tr class="cell">${feature.numberOfApprovedScenarios}</span>  </td>
+            <tr class="cell">${feature.totalScenarios}</span>  </td>
+            <tr class="cell">${feature.totalApprovedScenarios}</span>  </td>
             <br>
         </c:forEach>
     </table>

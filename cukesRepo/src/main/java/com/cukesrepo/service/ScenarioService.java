@@ -24,9 +24,17 @@ public class ScenarioService
 
     public List<Scenario> getScenariosByFeature(Feature feature)
     {
-        Validate.notNull(feature, "feature cannot be empty/null");
+        Validate.notNull(feature, "feature cannot be null");
 
         return feature.getScenarios();
     }
 
+    public void approveScenario(String projectName, String featureId, String scenarioId)
+    {
+        Validate.notEmpty(projectName, "projectName cannot be empty/null");
+        Validate.notEmpty(featureId, "feature cannot be empty/null");
+        Validate.notEmpty(scenarioId, "scenarioId cannot be empty/null");
+
+        _featureService.approveScenario(projectName, featureId, scenarioId);
+    }
 }

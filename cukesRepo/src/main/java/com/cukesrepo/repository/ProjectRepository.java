@@ -1,72 +1,58 @@
 package com.cukesrepo.repository;
 
 
-import com.cukesrepo.domain.Projects;
 import com.cukesrepo.domain.Project;
 import com.google.common.base.Optional;
+import org.apache.commons.lang.Validate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ProjectRepository
 {
 
-    private final String _workspace;
-    private final String _project1Name;
-    private final String _project2Name;
-    private Projects _cukesProjects;
+    private final MongoTemplate _mongoTemplate;
+    private List<Project> _projects = new ArrayList<>();
+
+    private static final Logger LOG = LoggerFactory.getLogger(ProjectRepository.class);
 
     @Autowired
-    public ProjectRepository(@Value("${project.workspace}") String workspace, @Value("${project.one}") String project1Name,
-                             @Value("${project.two}") String project2Name)
+    public ProjectRepository(MongoTemplate mongoTemplate)
     {
-         _cukesProjects = new Projects();
-        _workspace = workspace;
-        _project1Name =project1Name;
-        _project2Name=project2Name;
-        _setupDefaultProjects();
+        Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
+
+        _mongoTemplate = mongoTemplate;
+
     }
 
-    public ArrayList<Project> getProjects()
+    public List<Project> getProjects()
     {
-        return _cukesProjects.getProjects();
-    }
+        LOG.info("Querying db to get all the projects");
 
-    public void setProjects(ArrayList<Project> projects)
-    {
-        _cukesProjects.setProjects(projects);
-    }
+        _projects = _mongoTemplate.find(new Query(), Project.class);
 
-    private void _setupDefaultProjects()
-    {
-
-        ArrayList<Project> projects = new ArrayList<Project>();
-        Project oraTest = new Project();
-        oraTest.setName(_project1Name);
-        oraTest.setRepositoryPath(_workspace + "/" + _project1Name);
-
-        Project campaignManagerTest = new Project();
-        campaignManagerTest.setName(_project2Name);
-        campaignManagerTest.setRepositoryPath(_workspace + "/" + _project2Name);
-
-        projects.add(oraTest);
-        projects.add(campaignManagerTest);
-
-        setProjects(projects);
+        return _projects;
     }
 
     public Optional<Project> getProjectByName(String projectName)
     {
-        for(Project project : getProjects())
-        {
-            if(project.getName().equalsIgnoreCase(projectName))
-                return Optional.fromNullable(project);
-        }
+        Query query = new Query(Criteria.where(Project.NAME).is(projectName));
 
-        return Optional.absent();
+        Project project = _mongoTemplate.findOne(query, Project.class);
+
+        LOG.info("Project '{}' found from db", projectName);
+
+        return Optional.fromNullable(project);
     }
+
 }
+
 
