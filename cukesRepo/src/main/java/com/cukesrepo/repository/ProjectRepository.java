@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ProjectRepository
-{
+public class ProjectRepository {
 
     private final MongoTemplate _mongoTemplate;
     private List<Project> _projects = new ArrayList<>();
@@ -25,16 +24,15 @@ public class ProjectRepository
     private static final Logger LOG = LoggerFactory.getLogger(ProjectRepository.class);
 
     @Autowired
-    public ProjectRepository(MongoTemplate mongoTemplate)
-    {
+    public ProjectRepository(MongoTemplate mongoTemplate) {
+
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
 
         _mongoTemplate = mongoTemplate;
-
     }
 
-    public List<Project> getProjects()
-    {
+    public List<Project> getProjects() {
+
         LOG.info("Querying db to get all the projects");
 
         _projects = _mongoTemplate.find(new Query(), Project.class);
@@ -42,8 +40,8 @@ public class ProjectRepository
         return _projects;
     }
 
-    public Optional<Project> getProjectByName(String projectName)
-    {
+    public Optional<Project> getProjectByName(String projectName) {
+
         Query query = new Query(Criteria.where(Project.NAME).is(projectName));
 
         Project project = _mongoTemplate.findOne(query, Project.class);

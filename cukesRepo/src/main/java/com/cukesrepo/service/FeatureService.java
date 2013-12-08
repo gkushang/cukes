@@ -1,5 +1,7 @@
 package com.cukesrepo.service;
 
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.repository.FeatureRepository;
 import com.google.common.base.Optional;
@@ -12,52 +14,44 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FeatureService
-{
+public class FeatureService {
     private FeatureRepository _featureRepository;
 
     private static final Logger LOG = LoggerFactory.getLogger(FeatureService.class);
 
 
     @Autowired
-    public FeatureService(FeatureRepository featureRepository)
-    {
+    public FeatureService(FeatureRepository featureRepository) {
+
         Validate.notNull(featureRepository, "featureRepository cannot be null");
 
         _featureRepository = featureRepository;
     }
 
-    public List<Feature> fetch(String projectName)
-    {
+    public List<Feature> fetchFeatures(String projectName) throws FeatureNotFoundException, ProjectNotFoundException {
 
         Validate.notEmpty(projectName, "projectName cannot be null");
 
-        return _featureRepository.fetch(projectName);
+        return _featureRepository.fetchFeatures(projectName);
 
     }
 
-    public Optional<Feature> getFeatureById(String projectName, String featureId)
-    {
+    public Optional<Feature> getFeatureName(String projectName, String featureId) throws FeatureNotFoundException {
 
         Validate.notEmpty(featureId, "featureId cannot be empty or null");
 
-        Optional<Feature> feature = _featureRepository.getFeatureById(projectName, featureId);
+        Optional<Feature> feature = _featureRepository.getFeatureName(projectName, featureId);
 
-        if(feature.isPresent())
-        {
+        if (feature.isPresent()) {
+
             LOG.error("Feature found by id '{}'", featureId);
             return feature;
+
+        } else {
+
+            LOG.error("Feature not found by id '{}'", featureId);
+            throw new FeatureNotFoundException("Feature '" + featureId + "' not found");
         }
-
-        else LOG.error("Feature not found by id '{}'", featureId);
-
-        return Optional.absent();
-    }
-
-    public void approveScenario(String projectName, String featureId, String scenarioId)
-    {
-        //TODO - Approve scenario
-
     }
 
 }

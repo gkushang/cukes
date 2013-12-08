@@ -65,4 +65,14 @@ public class Row {
         this.additionalProperties.put(name, value);
     }
 
+    public Boolean compareTo(Row row) {
+        if (cells.size() != row.cells.size())
+            return false;
+
+        for (int index = 0; index < cells.size(); index++)
+            if (!cells.get(index).equals(row.cells.get(index)))
+                return false;
+
+        return true;
+    }
 }
