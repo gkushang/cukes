@@ -1,5 +1,7 @@
 package com.cukesrepo.repository;
 
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
 import com.cukesrepo.domain.Feature;
 import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
@@ -11,16 +13,13 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class FeatureRepository
-{
+public class FeatureRepository {
 
     private final MongoTemplate _mongoTemplate;
     private final GitRepository _gitRepository;
-    private List<Feature> _features = new ArrayList<>();
 
     private static final Logger LOG = LoggerFactory.getLogger(FeatureRepository.class);
 
@@ -29,9 +28,7 @@ public class FeatureRepository
             (
                     GitRepository gitRepository,
                     MongoTemplate mongoTemplate
-
-            )
-    {
+            ) {
 
         Validate.notNull(gitRepository, "gitRepository cannot be null");
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
@@ -41,46 +38,31 @@ public class FeatureRepository
 
     }
 
-    public List<Feature>  getFeatures()
-    {
-        return _features;
-    }
+    public List<Feature> fetchFeatures(String projectName) throws FeatureNotFoundException, ProjectNotFoundException {
 
+        LOG.info("Fetch features for Project '{}'", projectName);
 
-    public List<Feature> fetch(String projectName)
-    {
+        List<Feature> gitFeatures = _gitRepository.fetchFeatures(projectName);
 
-        Query query = new Query(Criteria.where(Feature.PROJECTNAME).is(projectName));
+        for (Feature feature : gitFeatures) feature.setProjectName(projectName);
 
-        List<Feature> _features = _mongoTemplate.find(query, Feature.class);
+        _mongoTemplate.remove(_queryToFindAllFeatures(projectName), Feature.class);
 
-        if(_features == null || _features.size() <= 0)
-        {
-            LOG.info("Fetching features from Git for '{}' project", projectName);
+        LOG.info("Insert features to DB for Project '{}'", projectName);
 
-            _features = _gitRepository.fetchFeatures(projectName);
+        _mongoTemplate.insertAll(gitFeatures);
 
-            LOG.info("Inserting features to db for '{}' project", projectName);
-
-            _mongoTemplate.insertAll(_features);
-
-        }else
-        {
-            LOG.info("Features found from db for '{}' project", projectName);
-        }
-
-        return _features;
+        return gitFeatures;
 
     }
 
-    public void approveScenario(String featureId, String scenarioId)
-    {
-         //TODO - add code for approval
+    private Query _queryToFindAllFeatures(String projectName) {
 
+        return new Query(Criteria.where(Feature.PROJECTNAME).is(projectName));
     }
 
-    public Optional<Feature> getFeatureById(String projectName, String id)
-    {
+    public Optional<Feature> getFeatureName(String projectName, String id) {
+
         Query query = new Query((Criteria.where(Feature.ID).is(id)).and(Feature.PROJECTNAME).is(projectName));
 
         return Optional.fromNullable(_mongoTemplate.findOne(query, Feature.class));

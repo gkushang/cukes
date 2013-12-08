@@ -1,15 +1,17 @@
 package com.cukesrepo.controller;
 
-import com.cukesrepo.domain.Feature;
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
+import com.cukesrepo.Exceptions.ScenariosNotFoundException;
 import com.cukesrepo.service.FeatureService;
 import com.cukesrepo.service.ScenarioService;
-import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,8 +22,7 @@ public class ScenariosPageController {
     private final FeatureService _featureService;
 
     @Autowired
-    public ScenariosPageController(FeatureService featureService, ScenarioService scenarioService)
-    {
+    public ScenariosPageController(FeatureService featureService, ScenarioService scenarioService) {
         Validate.notNull(featureService, "featureService cannot be null");
         Validate.notNull(scenarioService, "scenarioService cannot be null");
 
@@ -30,31 +31,52 @@ public class ScenariosPageController {
     }
 
     @RequestMapping(value = "projects/{projectName}/{featureId}/", method = RequestMethod.GET)
-	protected ModelAndView scenariosPage
-    (
-            @PathVariable String projectName,
-            @PathVariable String featureId
-    )
-    {
+    protected ModelAndView scenariosPage
+            (
+                    @PathVariable String projectName,
+                    @PathVariable String featureId
+            ) {
 
         Validate.notNull(projectName, "projectName cannot be null");
         Validate.notNull(featureId, "featureId cannot be null");
 
-        Optional<Feature> feature = _featureService.getFeatureById(projectName, featureId);
+        ModelAndView model = new ModelAndView("ScenarioPage");
 
-		ModelAndView model = new ModelAndView("ScenarioPage");
+        try {
 
-        if(feature.isPresent())
-        {
-            model.addObject("feature", feature.get());
-            model.addObject("scenarios", _scenarioService.getScenariosByFeature(feature.get()));
+            model.addObject("feature.name", _featureService.getFeatureName(projectName, featureId).get());
+            model.addObject("scenarios", _scenarioService.fetchScenarios(projectName, featureId));
 
-        }else
-        {
-            //add error scenarios here if feature not found
+        } catch (FeatureNotFoundException fe) {
+
+        } catch (ProjectNotFoundException pe) {
+
+        } catch (ScenariosNotFoundException se) {
+
         }
 
-		return model;
-	}
+        return model;
+    }
+
+    @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioId}/approved", method = RequestMethod.GET)
+    protected
+    @ResponseBody
+    String scenariosPage
+            (
+                    @PathVariable String projectName,
+                    @PathVariable String featureId,
+                    @PathVariable String scenarioId
+            ) {
+
+        try {
+
+            _scenarioService.approveScenario(projectName, featureId, scenarioId);
+
+        } catch (ScenariosNotFoundException e) {
+
+            return e.getMessage();
+        }
+        return "approved";
+    }
 
 }

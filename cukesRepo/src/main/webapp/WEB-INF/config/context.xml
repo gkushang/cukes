@@ -20,7 +20,6 @@
 
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
 
-
     <bean class="org.resthub.web.springmvc.router.RouterHandlerMapping">
         <property name="routeFiles">
             <list>
@@ -28,6 +27,7 @@
             </list>
         </property>
     </bean>
+
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,6 +38,4 @@
             <value>.jsp</value>
         </property>
     </bean>
-
-
 </beans>

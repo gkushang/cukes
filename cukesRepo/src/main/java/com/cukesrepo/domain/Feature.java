@@ -1,6 +1,7 @@
 package com.cukesrepo.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -56,15 +57,14 @@ public class Feature {
     @JsonProperty("line")
     private Integer line;
 
-    @Field("scenarios")
     @JsonProperty("elements")
+    @Transient
     private List<Scenario> scenarios = new ArrayList<Scenario>();
 
     @JsonProperty("uri")
     private String uri;
 
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
 
     @JsonProperty("id")
     public String getId() {
@@ -146,23 +146,19 @@ public class Feature {
         this.additionalProperties.put(name, value);
     }
 
-    public void setTotalScenarios(int totalScenarios)
-    {
+    public void setTotalScenarios(int totalScenarios) {
         this.totalScenarios = totalScenarios;
     }
 
-    public int getTotalScenarios()
-    {
+    public int getTotalScenarios() {
         return this.totalScenarios;
     }
 
-    public void setTotalApprovedScenarios(int totalApprovedScenarios)
-    {
+    public void setTotalApprovedScenarios(int totalApprovedScenarios) {
         this.totalApprovedScenarios = totalApprovedScenarios;
     }
 
-    public int getTotalApprovedScenarios()
-    {
+    public int getTotalApprovedScenarios() {
         return totalApprovedScenarios;
     }
 

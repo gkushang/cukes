@@ -1,8 +1,10 @@
 package com.cukesrepo.service;
 
 
-import com.cukesrepo.domain.Feature;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
+import com.cukesrepo.Exceptions.ScenariosNotFoundException;
 import com.cukesrepo.domain.Scenario;
+import com.cukesrepo.repository.ScenarioRepository;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,31 +12,25 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ScenarioService
-{
-    private final FeatureService _featureService;
+public class ScenarioService {
+    private final ScenarioRepository _scenarioRepository;
 
     @Autowired
-    public ScenarioService(FeatureService featureService)
-    {
-        Validate.notNull(featureService, "featureService cannot be null");
+    public ScenarioService(ScenarioRepository scenarioRepository) {
 
-        _featureService = featureService;
+        Validate.notNull(scenarioRepository, "scenarioRepository cannot be null");
+
+        _scenarioRepository = scenarioRepository;
     }
 
-    public List<Scenario> getScenariosByFeature(Feature feature)
-    {
-        Validate.notNull(feature, "feature cannot be null");
 
-        return feature.getScenarios();
+    public void approveScenario(String projectName, String featureId, String scenarioName) throws ScenariosNotFoundException {
+
+        _scenarioRepository.approveScenario(projectName, featureId, scenarioName);
+
     }
 
-    public void approveScenario(String projectName, String featureId, String scenarioId)
-    {
-        Validate.notEmpty(projectName, "projectName cannot be empty/null");
-        Validate.notEmpty(featureId, "feature cannot be empty/null");
-        Validate.notEmpty(scenarioId, "scenarioId cannot be empty/null");
-
-        _featureService.approveScenario(projectName, featureId, scenarioId);
+    public List<Scenario> fetchScenarios(String projectName, String featureId) throws ScenariosNotFoundException, ProjectNotFoundException {
+        return _scenarioRepository.fetchScenarios(projectName, featureId);
     }
 }

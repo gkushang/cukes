@@ -1,5 +1,7 @@
 package com.cukesrepo.controller;
 
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
 import com.cukesrepo.service.FeatureService;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,7 @@ public class FeaturesPageController {
     private final FeatureService _featureService;
 
     @Autowired
-    public FeaturesPageController(FeatureService featureService)
-    {
+    public FeaturesPageController(FeatureService featureService) {
         Validate.notNull(featureService, "featureService cannot be null");
 
         _featureService = featureService;
@@ -24,14 +25,21 @@ public class FeaturesPageController {
 
     @RequestMapping(value = {"/projects/{projectName}/"}, method = RequestMethod.GET)
     protected ModelAndView featuresPage
-    (
-            @PathVariable String projectName
-    )
-    {
+            (
+                    @PathVariable String projectName
+
+            ) throws FeatureNotFoundException, ProjectNotFoundException {
 
         ModelAndView model = new ModelAndView("FeaturesPage");
 
-        model.addObject("features", _featureService.fetch(projectName));
+        try {
+            model.addObject("features", _featureService.fetchFeatures(projectName));
+
+        } catch (FeatureNotFoundException fe) {
+
+        } catch (ProjectNotFoundException pe) {
+
+        }
 
         return model;
     }

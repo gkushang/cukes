@@ -15,8 +15,7 @@ public class ProjectsPageController {
     private final ProjectService _projectService;
 
     @Autowired
-    public ProjectsPageController(ProjectService projectService)
-    {
+    public ProjectsPageController(ProjectService projectService) {
         Validate.notNull(projectService, "projectService cannot be null");
 
         _projectService = projectService;
@@ -27,8 +26,7 @@ public class ProjectsPageController {
     protected ModelAndView projectsPage
             (
 
-            )
-    {
+            ) {
 
         ModelAndView model = new ModelAndView("ProjectsPage");
 

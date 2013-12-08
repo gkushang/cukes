@@ -63,4 +63,9 @@ public class Step {
         this.additionalProperties.put(name, value);
     }
 
+    public Boolean compareTo(Step step)
+    {
+        return name.equals(step.name);
+    }
+
 }

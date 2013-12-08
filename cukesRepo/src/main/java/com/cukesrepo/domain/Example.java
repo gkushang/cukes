@@ -1,15 +1,12 @@
 package com.cukesrepo.domain;
 
+import com.fasterxml.jackson.annotation.*;
+
+import javax.annotation.Generated;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("com.googlecode.jsonschema2pojo")
@@ -107,4 +104,15 @@ public class Example {
         this.additionalProperties.put(name, value);
     }
 
+    public Boolean compareTo(Example example) {
+
+        if (rows.size() != example.rows.size())
+            return false;
+
+        for (int index = 0; index < rows.size(); index++)
+            if (!rows.get(index).compareTo(example.rows.get(index)))
+                return false;
+
+        return true;
+    }
 }
