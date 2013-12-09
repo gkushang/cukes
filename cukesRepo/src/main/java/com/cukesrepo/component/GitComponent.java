@@ -75,10 +75,13 @@ public class GitComponent {
             Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
 
             if (feature.getId().equals(featureId)) {
+                int scenarioId = 0;
+
                 for (Scenario scenario : feature.getScenarios()) {
                     scenario.setFeatureId(featureId);
                     scenario.setProjectName(project.getName());
                     scenario.setFeatureName(feature.getName());
+                    scenario.setNumber(++scenarioId);
                 }
 
                 return feature.getScenarios();
