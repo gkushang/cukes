@@ -33,6 +33,7 @@ public class Scenario {
     public static final String APPROVED = "approved";
     public static final String ID = "_id";
     public static final String NAME = "name";
+    public static final String NUMBER = "number";
 
     @JsonProperty("id")
     @Field(ID)
@@ -83,6 +84,9 @@ public class Scenario {
 
     @Field(FEATURENAME)
     private String featureName;
+
+    @Field(NUMBER)
+    private Integer number;
 
     @JsonProperty("id")
     public String getId() {
@@ -216,6 +220,14 @@ public class Scenario {
         this.featureName = featureName;
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
     public Boolean compareTo(Scenario scenario) {
 
         if (this.steps.size() != scenario.steps.size())
@@ -224,12 +236,12 @@ public class Scenario {
         if (this.examples.size() != scenario.examples.size())
             return false;
 
-        for (int index = 0; index < examples.size(); index++)
-            if (!examples.get(index).compareTo(scenario.examples.get(index)))
+        for (int index = 0; index < steps.size(); index++)
+            if (!steps.get(index).compareTo(scenario.steps.get(index)))
                 return false;
 
         for (int index = 0; index < examples.size(); index++)
-            if (!steps.get(index).compareTo(scenario.steps.get(index)))
+            if (!examples.get(index).compareTo(scenario.examples.get(index)))
                 return false;
 
         return true;
