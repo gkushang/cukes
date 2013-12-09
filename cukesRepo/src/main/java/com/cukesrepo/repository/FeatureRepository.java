@@ -15,8 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class FeatureRepository
-{
+public class FeatureRepository {
 
     private final MongoTemplate _mongoTemplate;
     private final GitRepository _gitRepository;
@@ -30,8 +29,7 @@ public class FeatureRepository
                     GitRepository gitRepository,
                     MongoTemplate mongoTemplate
 
-            )
-    {
+            ) {
 
         Validate.notNull(gitRepository, "gitRepository cannot be null");
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
@@ -41,21 +39,18 @@ public class FeatureRepository
 
     }
 
-    public List<Feature>  getFeatures()
-    {
+    public List<Feature> getFeatures() {
         return _features;
     }
 
 
-    public List<Feature> fetch(String projectName)
-    {
+    public List<Feature> fetch(String projectName) {
 
         Query query = new Query(Criteria.where(Feature.PROJECTNAME).is(projectName));
 
         List<Feature> _features = _mongoTemplate.find(query, Feature.class);
 
-        if(_features == null || _features.size() <= 0)
-        {
+        if (_features == null || _features.size() <= 0) {
             LOG.info("Fetching features from Git for '{}' project", projectName);
 
             _features = _gitRepository.fetchFeatures(projectName);
@@ -64,8 +59,7 @@ public class FeatureRepository
 
             _mongoTemplate.insertAll(_features);
 
-        }else
-        {
+        } else {
             LOG.info("Features found from db for '{}' project", projectName);
         }
 
@@ -73,14 +67,12 @@ public class FeatureRepository
 
     }
 
-    public void approveScenario(String featureId, String scenarioId)
-    {
-         //TODO - add code for approval
+    public void approveScenario(String featureId, String scenarioId) {
+        //TODO - add code for approval
 
     }
 
-    public Optional<Feature> getFeatureById(String projectName, String id)
-    {
+    public Optional<Feature> getFeatureById(String projectName, String id) {
         Query query = new Query((Criteria.where(Feature.ID).is(id)).and(Feature.PROJECTNAME).is(projectName));
 
         return Optional.fromNullable(_mongoTemplate.findOne(query, Feature.class));

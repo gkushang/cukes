@@ -20,8 +20,7 @@ public class ScenariosPageController {
     private final FeatureService _featureService;
 
     @Autowired
-    public ScenariosPageController(FeatureService featureService, ScenarioService scenarioService)
-    {
+    public ScenariosPageController(FeatureService featureService, ScenarioService scenarioService) {
         Validate.notNull(featureService, "featureService cannot be null");
         Validate.notNull(scenarioService, "scenarioService cannot be null");
 
@@ -30,31 +29,28 @@ public class ScenariosPageController {
     }
 
     @RequestMapping(value = "projects/{projectName}/{featureId}/", method = RequestMethod.GET)
-	protected ModelAndView scenariosPage
-    (
-            @PathVariable String projectName,
-            @PathVariable String featureId
-    )
-    {
+    protected ModelAndView scenariosPage
+            (
+                    @PathVariable String projectName,
+                    @PathVariable String featureId
+            ) {
 
         Validate.notNull(projectName, "projectName cannot be null");
         Validate.notNull(featureId, "featureId cannot be null");
 
         Optional<Feature> feature = _featureService.getFeatureById(projectName, featureId);
 
-		ModelAndView model = new ModelAndView("ScenarioPage");
+        ModelAndView model = new ModelAndView("ScenarioPage");
 
-        if(feature.isPresent())
-        {
+        if (feature.isPresent()) {
             model.addObject("feature", feature.get());
             model.addObject("scenarios", _scenarioService.getScenariosByFeature(feature.get()));
 
-        }else
-        {
+        } else {
             //add error scenarios here if feature not found
         }
 
-		return model;
-	}
+        return model;
+    }
 
 }

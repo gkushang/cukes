@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class GitComponent
-{
+public class GitComponent {
     private final String FEATURE_FILE_EXTENSION = ".feature";
     private final String _featureFilePath;
     private final FeatureComponent _featureComponent;
@@ -35,24 +34,21 @@ public class GitComponent
             (
                     @Value("${feature.file.path}") String featureFilePath,
                     FeatureComponent featureComponent
-            )
-    {
+            ) {
         Validate.notEmpty(featureFilePath, "featureFilePath cannot be null or empty");
 
         _featureFilePath = featureFilePath;
         _featureComponent = featureComponent;
     }
 
-    public List<Feature> fetch(Project project)
-    {
+    public List<Feature> fetch(Project project) {
         //TODO - Replace by GitHub code
 
         String featureFileAbsolutePath = project.getRepositoryPath() + _featureFilePath;
 
         List<Feature> features = new ArrayList<>();
 
-        for(File file : _finder(featureFileAbsolutePath))
-        {
+        for (File file : _finder(featureFileAbsolutePath)) {
             Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
 
             features.add(_featureComponent.processFeature(project, feature));
@@ -64,27 +60,22 @@ public class GitComponent
         return features;
     }
 
-    private File[] _finder(String directoryPath)
-    {
+    private File[] _finder(String directoryPath) {
         File dir = new File(directoryPath);
 
         return
                 dir.listFiles
-                        (new FilenameFilter()
-                        {
-                            public boolean accept(File dir, String filename)
-                            {
+                        (new FilenameFilter() {
+                            public boolean accept(File dir, String filename) {
                                 return filename.endsWith(FEATURE_FILE_EXTENSION);
                             }
                         }
                         );
     }
 
-    private Feature _convertFeatureFileToPOJO(String path)
-    {
+    private Feature _convertFeatureFileToPOJO(String path) {
 
-        try
-        {
+        try {
             String gherkin = FixJava.readReader(new InputStreamReader(
                     new FileInputStream(path), "UTF-8"));
 
@@ -105,8 +96,7 @@ public class GitComponent
             return mapper.readValue(json.toString(), Feature[].class)[0];
 
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException("\nError in parsing feature file to Json : " + path, e);
         }
 

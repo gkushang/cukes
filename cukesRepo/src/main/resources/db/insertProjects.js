@@ -1,6 +1,6 @@
 var project_one = "oraTest";
 var project_two = "campaignManagerTest";
-var workspace =  "/Users/kugajjar/Documents/workspace/";
+var workspace =  "/Users/maduraisamy/Paypal/";
 
 var projects = [   	{
                     		"_class" : "com.cukesrepo.domain.Project",

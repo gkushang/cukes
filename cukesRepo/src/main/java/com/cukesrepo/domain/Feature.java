@@ -146,23 +146,19 @@ public class Feature {
         this.additionalProperties.put(name, value);
     }
 
-    public void setTotalScenarios(int totalScenarios)
-    {
+    public void setTotalScenarios(int totalScenarios) {
         this.totalScenarios = totalScenarios;
     }
 
-    public int getTotalScenarios()
-    {
+    public int getTotalScenarios() {
         return this.totalScenarios;
     }
 
-    public void setTotalApprovedScenarios(int totalApprovedScenarios)
-    {
+    public void setTotalApprovedScenarios(int totalApprovedScenarios) {
         this.totalApprovedScenarios = totalApprovedScenarios;
     }
 
-    public int getTotalApprovedScenarios()
-    {
+    public int getTotalApprovedScenarios() {
         return totalApprovedScenarios;
     }
 

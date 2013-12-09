@@ -10,27 +10,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ScenarioService
-{
+public class ScenarioService {
     private final FeatureService _featureService;
 
     @Autowired
-    public ScenarioService(FeatureService featureService)
-    {
+    public ScenarioService(FeatureService featureService) {
         Validate.notNull(featureService, "featureService cannot be null");
 
         _featureService = featureService;
     }
 
-    public List<Scenario> getScenariosByFeature(Feature feature)
-    {
+    public List<Scenario> getScenariosByFeature(Feature feature) {
         Validate.notNull(feature, "feature cannot be null");
 
         return feature.getScenarios();
     }
 
-    public void approveScenario(String projectName, String featureId, String scenarioId)
-    {
+    public void approveScenario(String projectName, String featureId, String scenarioId) {
         Validate.notEmpty(projectName, "projectName cannot be empty/null");
         Validate.notEmpty(featureId, "feature cannot be empty/null");
         Validate.notEmpty(scenarioId, "scenarioId cannot be empty/null");

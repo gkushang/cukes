@@ -14,8 +14,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class GitRepository
-{
+public class GitRepository {
 
     private final ProjectRepository _projectRepository;
     private final GitComponent _gitComponent;
@@ -27,8 +26,7 @@ public class GitRepository
             (
                     ProjectRepository projectRepository,
                     GitComponent gitComponent
-            )
-    {
+            ) {
         Validate.notNull(projectRepository, "projectRepository cannot be null");
         Validate.notNull(gitComponent, "gitComponent cannot be null");
 
@@ -38,13 +36,12 @@ public class GitRepository
 
     }
 
-    public List<Feature> fetchFeatures(String projectName)
-    {
+    public List<Feature> fetchFeatures(String projectName) {
         Optional<Project> project = _projectRepository.getProjectByName(projectName);
 
         LOG.info("Fetching features from Git/Local repository for the project '{}'", projectName);
 
-        if(!project.isPresent()) throw new RuntimeException("Project '"+ projectName +"'is not present");
+        if (!project.isPresent()) throw new RuntimeException("Project '" + projectName + "'is not present");
 
         return _gitComponent.fetch(project.get());
     }

@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ScenarioComponent
-{
+public class ScenarioComponent {
 
     private int _numberOfScenarios;
     private int _numberOfApprovedScenarios;
@@ -21,19 +20,17 @@ public class ScenarioComponent
         return _numberOfScenarios;
     }
 
-    public void processScenarios(List<Scenario> scenarios)
-    {
+    public void processScenarios(List<Scenario> scenarios) {
         _numberOfScenarios = 0;
         _numberOfApprovedScenarios = 0;
 
-        for(Scenario scenario : scenarios)
-        {
+        for (Scenario scenario : scenarios) {
             _numberOfScenarios++;
 
-            for(Example example : scenario.getExamples())
+            for (Example example : scenario.getExamples())
                 _numberOfScenarios += example.getRows().size() - 2;
 
-            if(scenario.isApproved())
+            if (scenario.isApproved())
                 _numberOfApprovedScenarios++;
         }
 
