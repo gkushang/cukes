@@ -25,7 +25,7 @@ public class EmailService {
     final String username = "cukes.repo@gmail.com";
     final String password = "hackathon";
 
-    public String send() {
+    public Void send(String toEmailAddress,String emailSubject,String emailBody) {
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -45,15 +45,12 @@ public class EmailService {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("cuckesrepo@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse("mahesh.karthikd@gmail.com"));
-            message.setSubject("Testing Subject");
-            message.setText("Dear Kushang,"
-                    + "\n\n No spam to my email, please!");
+                    InternetAddress.parse(toEmailAddress));
+            message.setSubject(emailSubject);
+            message.setText(emailBody);
 
             Transport.send(message);
 
-            System.out.println("Done");
-            return "success";
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
