@@ -59,7 +59,7 @@ public class ScenariosPageController {
 
     @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioNumber}/approved", method = RequestMethod.GET)
     protected
-    ModelAndView scenariosPage
+    ModelAndView approveScenario
             (
                     @PathVariable String projectName,
                     @PathVariable String featureId,
@@ -74,11 +74,35 @@ public class ScenariosPageController {
 
         } catch (ScenariosNotFoundException e) {
 
-            return  scenariosPage(projectName, featureId);
         }
 
         return  scenariosPage(projectName, featureId);
 
     }
+
+    @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioNumber}/comments/{comment}", method = RequestMethod.GET)
+    protected
+    ModelAndView commentPage
+            (
+                    @PathVariable String projectName,
+                    @PathVariable String featureId,
+                    @PathVariable String scenarioNumber,
+                    @PathVariable String comment
+            ) {
+
+        //TODO - temporary code for controller. this will be replaced by actual htmls
+
+
+            try {
+                _scenarioService.addComment(projectName, featureId, scenarioNumber, comment);
+
+            } catch (ScenariosNotFoundException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+
+        return  scenariosPage(projectName, featureId);
+
+    }
+
 
 }
