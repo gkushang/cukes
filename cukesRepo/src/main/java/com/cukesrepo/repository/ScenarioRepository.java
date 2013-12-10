@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -40,39 +39,23 @@ public class ScenarioRepository {
     }
 
 
-    public void insertScenarios(String projectName, String featureId, List<Scenario> scenarios) {
+    public void insertScenarios(String projectName, String featureId, List<Scenario> gitScenarios) {
 
         List<Scenario> approvedScenarios = getApprovedScenariosFromDB(projectName, featureId);
 
         _mongoTemplate.remove(_queryToFindAllScenarios(projectName, featureId), Scenario.class);
 
-        _mongoTemplate.insertAll(scenarios);
-
-        processScenariosForApproval(approvedScenarios);
+        _mongoTemplate.insertAll(approveScenarios(approvedScenarios, gitScenarios));
     }
 
-    public void processScenariosForApproval(List<Scenario> approvedScenarios) {
+    public List<Scenario> approveScenarios(List<Scenario> approvedScenarios, List<Scenario> gitScenarios)
+    {
+        for(Scenario approvedScenario : approvedScenarios)
+            for(Scenario gitScenario : gitScenarios)
+                if(approvedScenario.compareTo(gitScenario))
+                    gitScenario.setApproved(true);
 
-        for (Scenario approvedScenario : approvedScenarios) {
-
-            Optional<Scenario> gitScenario = _findOneScenarioById(approvedScenario.getProjectName(), approvedScenario.getFeatureId(), approvedScenario.getId());
-
-            if (gitScenario.isPresent())
-                updateScenarioIfApproved(approvedScenario, gitScenario.get());
-        }
-    }
-
-    public void updateScenarioIfApproved(Scenario approvedScenario, Scenario gitScenario) {
-
-        LOG.info("Found approved scenario '{}' for FeatureID '{}'", approvedScenario.getName(), approvedScenario.getFeatureId());
-
-        _mongoTemplate.updateFirst
-                (
-                        _queryToFindOneScenarioById(approvedScenario.getProjectName(), approvedScenario.getFeatureId(), approvedScenario.getId()),
-                        Update.update(Scenario.APPROVED, gitScenario.compareTo(approvedScenario)),
-                        Scenario.class
-                );
-
+        return gitScenarios;
     }
 
     public List<Scenario> getApprovedScenariosFromDB(String projectName, String featureId) {
@@ -101,57 +84,41 @@ public class ScenarioRepository {
 
     }
 
-    public void approveScenario(String projectName, String featureId, String scenarioName) throws ScenariosNotFoundException {
+    public void approveScenario(String projectName, String featureId, String scenarioNumber) throws ScenariosNotFoundException {
 
-        Optional<Scenario> scenario = _findOneScenarioByName(projectName, featureId, scenarioName);
+        Optional<Scenario> scenario = _findOneScenarioByNumber(projectName, featureId, scenarioNumber);
 
         if (scenario.isPresent()) {
 
             scenario.get().setApproved(true);
 
             _mongoTemplate.save(scenario.get());
+
         } else {
             throw new ScenariosNotFoundException("Sorry, we couldn't find a scenario");
         }
     }
 
-    private Optional<Scenario> _findOneScenarioById(String projectName, String featureId, String scenarioId) {
+
+    private Optional<Scenario> _findOneScenarioByNumber(String projectName, String featureId, String scenarioNumber) {
 
         Optional<Scenario> scenarioOptional = Optional.fromNullable(_mongoTemplate.findOne
                 (
-                        _queryToFindOneScenarioById(projectName, featureId, scenarioId),
+                        _queryToFindOneScenarioByNumber(projectName, featureId, scenarioNumber),
                         Scenario.class
                 ));
 
         if (!scenarioOptional.isPresent())
-            LOG.warn("Scenario by ID '{}' not found for Project '{}' and FeatureID '{}'", scenarioId, projectName, featureId);
+            LOG.warn("Scenario by number '{}' not found for Project '{}' and FeatureID '{}'", scenarioNumber, projectName, featureId);
 
         else
-            LOG.info("Scenario by ID '{}' found for Project '{}' and FeatureID '{}'", scenarioId, projectName, featureId);
+            LOG.info("Scenario by number '{}' found for Project '{}' and FeatureID '{}'", scenarioNumber, projectName, featureId);
 
         return scenarioOptional;
 
     }
 
-    private Optional<Scenario> _findOneScenarioByName(String projectName, String featureId, String scenarioName) {
-
-        Optional<Scenario> scenarioOptional = Optional.fromNullable(_mongoTemplate.findOne
-                (
-                        _queryToFindOneScenarioByName(projectName, featureId, scenarioName),
-                        Scenario.class
-                ));
-
-        if (!scenarioOptional.isPresent())
-            LOG.warn("Scenario by name '{}' not found for Project '{}' and FeatureID '{}'", scenarioName, projectName, featureId);
-
-        else
-            LOG.info("Scenario by name '{}' found for Project '{}' and FeatureID '{}'", scenarioName, projectName, featureId);
-
-        return scenarioOptional;
-
-    }
-
-    private Query _queryToFindOneScenarioById(String projectName, String featureId, String scenarioId) {
+    private Query _queryToFindOneScenarioByNumber(String projectName, String featureId, String scenarioNumber) {
 
         return new Query
                 (
@@ -162,27 +129,9 @@ public class ScenarioRepository {
                                 and(Scenario.FEATUREID).
                                 is(featureId).
 
-                                and(Scenario.ID).
-                                is(scenarioId)
+                                and(Scenario.NUMBER).
+                                is(Integer.parseInt(scenarioNumber))
                 );
-
-    }
-
-    private Query _queryToFindOneScenarioByName(String projectName, String featureId, String scenarioName) {
-
-        return new Query
-                (
-                        Criteria.
-                                where(Scenario.PROJECTNAME).
-                                is(projectName).
-
-                                and(Scenario.FEATUREID).
-                                is(featureId).
-
-                                and(Scenario.NAME).
-                                is(scenarioName)
-                );
-
     }
 
     private Query _queryToFindAllScenarios(String projectName, String featureId) {

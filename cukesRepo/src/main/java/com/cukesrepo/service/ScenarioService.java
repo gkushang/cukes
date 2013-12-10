@@ -24,9 +24,9 @@ public class ScenarioService {
     }
 
 
-    public void approveScenario(String projectName, String featureId, String scenarioName) throws ScenariosNotFoundException {
+    public void approveScenario(String projectName, String featureId, String scenarioNumber) throws ScenariosNotFoundException {
 
-        _scenarioRepository.approveScenario(projectName, featureId, scenarioName);
+        _scenarioRepository.approveScenario(projectName, featureId, scenarioNumber);
 
     }
 

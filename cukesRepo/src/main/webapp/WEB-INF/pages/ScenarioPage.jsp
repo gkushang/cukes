@@ -114,6 +114,11 @@ body {
             <c:forEach var="step" items="${scenario.steps}">
                 <span class="step-keyword">${step.keyword}</span>
                 <span class="step-name"><c:out value="${step.name}" /></span> <br>
+                <c:forEach var="row" items="${step.rows}">
+                    <c:forEach var="cell" items="${row.cells}">
+                        <span class="step-name">| ${cell} |</span> <br>
+                    </c:forEach>
+                </c:forEach>
             </c:forEach>
 
             <br>

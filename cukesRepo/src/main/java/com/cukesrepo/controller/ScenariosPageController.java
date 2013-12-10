@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -58,25 +57,52 @@ public class ScenariosPageController {
         return model;
     }
 
-    @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioId}/approved", method = RequestMethod.GET)
+    @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioNumber}/approved", method = RequestMethod.GET)
     protected
-    @ResponseBody
-    String scenariosPage
+    ModelAndView approveScenario
             (
                     @PathVariable String projectName,
                     @PathVariable String featureId,
-                    @PathVariable String scenarioId
+                    @PathVariable String scenarioNumber
             ) {
+
+        //TODO - temporary code for controller. this will be replaced by actual htmls
 
         try {
 
-            _scenarioService.approveScenario(projectName, featureId, scenarioId);
+            _scenarioService.approveScenario(projectName, featureId, scenarioNumber);
 
         } catch (ScenariosNotFoundException e) {
 
-            return e.getMessage();
         }
-        return "approved";
+
+        return  scenariosPage(projectName, featureId);
+
     }
+
+    @RequestMapping(value = "projects/{projectName}/{featureId}/{scenarioNumber}/comments/{comment}", method = RequestMethod.GET)
+    protected
+    ModelAndView commentPage
+            (
+                    @PathVariable String projectName,
+                    @PathVariable String featureId,
+                    @PathVariable String scenarioNumber,
+                    @PathVariable String comment
+            ) {
+
+        //TODO - temporary code for controller. this will be replaced by actual htmls
+
+
+            try {
+                _scenarioService.addComment(projectName, featureId, scenarioNumber, comment);
+
+            } catch (ScenariosNotFoundException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+
+        return  scenariosPage(projectName, featureId);
+
+    }
+
 
 }
