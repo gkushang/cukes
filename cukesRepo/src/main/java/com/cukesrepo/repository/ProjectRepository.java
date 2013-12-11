@@ -25,13 +25,14 @@ public class ProjectRepository {
 
     @Autowired
     public ProjectRepository(MongoTemplate mongoTemplate) {
+
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
 
         _mongoTemplate = mongoTemplate;
-
     }
 
     public List<Project> getProjects() {
+
         LOG.info("Querying db to get all the projects");
 
         _projects = _mongoTemplate.find(new Query(), Project.class);
@@ -40,6 +41,7 @@ public class ProjectRepository {
     }
 
     public Optional<Project> getProjectByName(String projectName) {
+
         Query query = new Query(Criteria.where(Project.NAME).is(projectName));
 
         Project project = _mongoTemplate.findOne(query, Project.class);

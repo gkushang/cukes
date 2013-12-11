@@ -18,12 +18,14 @@ public class ProjectService {
             (
                     ProjectRepository projectRepository
             ) {
+
         Validate.notNull(projectRepository, "projectRepository cannot be null");
 
         _projectRepository = projectRepository;
     }
 
     public List<Project> getProjects() {
+
         return _projectRepository.getProjects();
     }
 

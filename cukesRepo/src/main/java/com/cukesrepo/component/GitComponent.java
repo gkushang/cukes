@@ -1,8 +1,11 @@
 package com.cukesrepo.component;
 
 
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ScenariosNotFoundException;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.Project;
+import com.cukesrepo.domain.Scenario;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gherkin.formatter.JSONFormatter;
 import gherkin.parser.Parser;
@@ -25,42 +28,76 @@ import java.util.List;
 public class GitComponent {
     private final String FEATURE_FILE_EXTENSION = ".feature";
     private final String _featureFilePath;
-    private final FeatureComponent _featureComponent;
+
 
     private static final Logger LOG = LoggerFactory.getLogger(GitComponent.class);
 
     @Autowired
     public GitComponent
             (
-                    @Value("${feature.file.path}") String featureFilePath,
-                    FeatureComponent featureComponent
+                    @Value("${feature.file.path}") String featureFilePath
             ) {
+
         Validate.notEmpty(featureFilePath, "featureFilePath cannot be null or empty");
 
         _featureFilePath = featureFilePath;
-        _featureComponent = featureComponent;
     }
 
-    public List<Feature> fetch(Project project) {
+    public List<Feature> fetchFeatures(Project project) throws FeatureNotFoundException {
         //TODO - Replace by GitHub code
 
-        String featureFileAbsolutePath = project.getRepositoryPath() + _featureFilePath;
+        String featureFileAbsolutePath = _getFeaturesAbsolutePath(project);
 
         List<Feature> features = new ArrayList<>();
 
-        for (File file : _finder(featureFileAbsolutePath)) {
+        for (File file : _findAllFeatureFiles(featureFileAbsolutePath)) {
             Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
 
-            features.add(_featureComponent.processFeature(project, feature));
+            feature.setProjectName(project.getName());
 
+            features.add(feature);
         }
 
-        LOG.info("Fetched '{}' feature(s) from Git/Local repository", features.size());
+        if (features.size() > 0) LOG.info("Fetched '{}' feature(s) from Git/Local repository", features.size());
+
+        else throw new FeatureNotFoundException("There are no Feature file available for '" +
+                project.getName() + "' at path " + project.getRepositoryPath());
 
         return features;
     }
 
-    private File[] _finder(String directoryPath) {
+
+    public List<Scenario> fetchScenarios(Project project, String featureId) throws ScenariosNotFoundException {
+
+        String featureFileAbsolutePath = _getFeaturesAbsolutePath(project);
+
+        for (File file : _findAllFeatureFiles(featureFileAbsolutePath)) {
+            Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
+
+            if (feature.getId().equals(featureId)) {
+                int scenarioId = 0;
+
+                for (Scenario scenario : feature.getScenarios()) {
+                    scenario.setFeatureId(featureId);
+                    scenario.setProjectName(project.getName());
+                    scenario.setFeatureName(feature.getName());
+                    scenario.setNumber(++scenarioId);
+                }
+
+                return feature.getScenarios();
+            }
+        }
+
+        throw new ScenariosNotFoundException("There are no scenarios found for Project '" + project.getName() + "' and Feature Id '" + featureId + "'");
+    }
+
+    private String _getFeaturesAbsolutePath(Project project) {
+
+        return project.getRepositoryPath() + _featureFilePath;
+    }
+
+    private File[] _findAllFeatureFiles(String directoryPath) {
+
         File dir = new File(directoryPath);
 
         return
@@ -97,9 +134,10 @@ public class GitComponent {
 
 
         } catch (Exception e) {
-            throw new RuntimeException("\nError in parsing feature file to Json : " + path, e);
+            throw new RuntimeException("Error in parsing feature file to Json : " + path, e);
         }
 
     }
+
 
 }

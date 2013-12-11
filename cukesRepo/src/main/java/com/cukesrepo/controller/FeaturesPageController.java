@@ -1,9 +1,14 @@
 package com.cukesrepo.controller;
 
+
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.page.FeaturesPage;
 import com.cukesrepo.page.ProjectsPage;
 import com.cukesrepo.service.EmailService;
+
+import com.cukesrepo.Exceptions.FeatureNotFoundException;
+import com.cukesrepo.Exceptions.ProjectNotFoundException;
+
 import com.cukesrepo.service.FeatureService;
 import com.cukesrepo.service.ProjectService;
 import org.apache.commons.lang.Validate;
@@ -29,19 +34,23 @@ public class FeaturesPageController {
 
 
     @Autowired
+
     public FeaturesPageController(FeatureService featureService,ProjectService projectService,EmailService emailService) {
+
         Validate.notNull(featureService, "featureService cannot be null");
 
         _featureService = featureService;
         _projectService = projectService;
         _emailService=emailService;
 
-    }
+}
 
     @RequestMapping(value = {"/projects/{projectName}/"})
     @ResponseBody
     public void featurespage(HtmlCanvas html, @PathVariable String projectName) throws IOException {
         html.render(new FeaturesPage(_featureService,_projectService,_emailService,projectName));
+
+   
 
 
     }

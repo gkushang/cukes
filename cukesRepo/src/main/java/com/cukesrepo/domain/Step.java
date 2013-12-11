@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.Generated;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,6 +22,9 @@ public class Step {
     private String keyword;
     @JsonProperty("line")
     private Integer line;
+    @JsonProperty("rows")
+    private List<Row> rows;
+
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("name")
@@ -31,6 +35,16 @@ public class Step {
     @JsonProperty("name")
     public void setName(String name) {
         this.name = name;
+    }
+
+    @JsonProperty("rows")
+    public List<Row> getRows() {
+        return rows;
+    }
+
+    @JsonProperty("rows")
+    public void setRows(List<Row> rows) {
+        this.rows = rows;
     }
 
     @JsonProperty("keyword")
@@ -61,6 +75,11 @@ public class Step {
     @JsonAnySetter
     public void setAdditionalProperties(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    public Boolean compareTo(Step step)
+    {
+        return name.equals(step.name);
     }
 
 }

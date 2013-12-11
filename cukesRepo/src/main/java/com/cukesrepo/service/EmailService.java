@@ -25,7 +25,9 @@ public class EmailService {
     final String username = "cukes.repo@gmail.com";
     final String password = "hackathon";
 
+
     public String send(String toEmailAddress,String emailSubject,String emailBody) {
+
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -50,12 +52,13 @@ public class EmailService {
             message.setText(emailBody);
 
             Transport.send(message);
+
 return "Success";
+
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
 

@@ -1,6 +1,8 @@
 package com.cukesrepo.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.annotation.Generated;
 import java.util.ArrayList;
@@ -22,29 +24,69 @@ import java.util.Map;
         "type"
 })
 
+@Document(collection = "scenario")
 public class Scenario {
 
+    public static final String PROJECTNAME = "projectname";
+    public static final String FEATUREID = "featureid";
+    public static final String FEATURENAME = "featurename";
+    public static final String APPROVED = "approved";
+    public static final String ID = "_id";
+    public static final String NAME = "name";
+    public static final String NUMBER = "number";
+
     @JsonProperty("id")
+    @Field(ID)
     private String id;
+
     @JsonProperty("tags")
+    @Field("tags")
     private List<Tag> tags = new ArrayList<Tag>();
+
     @JsonProperty("description")
+    @Field("description")
     private String description;
+
     @JsonProperty("name")
+    @Field(NAME)
     private String name;
+
     @JsonProperty("keyword")
+    @Field("keyword")
     private String keyword;
+
     @JsonProperty("line")
+    @Field("line")
     private Integer line;
+
     @JsonProperty("steps")
+    @Field("steps")
     private List<Step> steps = new ArrayList<Step>();
+
     @JsonProperty("examples")
+    @Field("examples")
     private List<Example> examples = new ArrayList<Example>();
+
     @JsonProperty("type")
+    @Field("type")
     private String type;
+
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    private Boolean _isApproved = false;
+    @Field(APPROVED)
+    private Boolean approved = false;
+
+    @Field(FEATUREID)
+    private String featureId;
+
+    @Field(PROJECTNAME)
+    private String projectName;
+
+    @Field(FEATURENAME)
+    private String featureName;
+
+    @Field(NUMBER)
+    private Integer number;
 
     @JsonProperty("id")
     public String getId() {
@@ -146,11 +188,63 @@ public class Scenario {
         this.additionalProperties.put(name, value);
     }
 
-    public Boolean isApproved() {
-        return _isApproved;
+    public Boolean getApproved() {
+        return approved;
     }
 
-    public void setIsApproved(Boolean _isApproved) {
-        this._isApproved = _isApproved;
+    public void setApproved(Boolean _isApproved) {
+        this.approved = _isApproved;
+    }
+
+    public String getFeatureId() {
+        return featureId;
+    }
+
+    public void setFeatureId(String featureId) {
+        this.featureId = featureId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getFeatureName() {
+        return featureName;
+    }
+
+    public void setFeatureName(String featureName) {
+        this.featureName = featureName;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public Boolean compareTo(Scenario scenario) {
+
+        if (this.steps.size() != scenario.steps.size())
+            return false;
+
+        if (this.examples.size() != scenario.examples.size())
+            return false;
+
+        for (int index = 0; index < steps.size(); index++)
+            if (!steps.get(index).compareTo(scenario.steps.get(index)))
+                return false;
+
+        for (int index = 0; index < examples.size(); index++)
+            if (!examples.get(index).compareTo(scenario.examples.get(index)))
+                return false;
+
+        return true;
+
     }
 }

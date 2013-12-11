@@ -34,6 +34,13 @@ body {
 	font-weight:bold;
 	font-size: 15px;
 }
+.scenario-approve {
+	color: darkorange;
+	text-align: left;
+	font-weight:bold;
+	font-size: 14px;
+}
+
 .scenario-name {
 	color: darkgreen;
 	text-align: left;
@@ -92,16 +99,26 @@ body {
 
 
 
-        <c:set var="feature" value="${feature}"/>
+
         <h2 class="features-title-1">Feature: ${feature.name}</h2>
 
         <c:forEach var="scenario" items="${scenarios}">
+            <span class="scenario-approve">Approved: ${scenario.approved}</span>   <br>
             <span class="scenario-title">${scenario.keyword}</span>
             <span class="scenario-title">: </span>
             <span class="scenario-name"><c:out value = "${scenario.name}" /></span> <br>
+
+
+
+            <br>
             <c:forEach var="step" items="${scenario.steps}">
                 <span class="step-keyword">${step.keyword}</span>
                 <span class="step-name"><c:out value="${step.name}" /></span> <br>
+                <c:forEach var="row" items="${step.rows}">
+                    <c:forEach var="cell" items="${row.cells}">
+                        <span class="step-name">| ${cell} |</span> <br>
+                    </c:forEach>
+                </c:forEach>
             </c:forEach>
 
             <br>
