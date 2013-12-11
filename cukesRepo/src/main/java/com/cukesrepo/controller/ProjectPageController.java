@@ -28,7 +28,7 @@ public class ProjectPageController {
     @RequestMapping(value = {"/projects/"})
     @ResponseBody
     public void projectspage(HtmlCanvas html) throws IOException {
-        html.render(new SiteLayoutWrapper(new ProjectsPage(_projectService)));
+        html.render(new ProjectsPage(_projectService));
 
 
     }

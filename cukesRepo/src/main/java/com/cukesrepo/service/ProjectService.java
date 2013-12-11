@@ -2,6 +2,7 @@ package com.cukesrepo.service;
 
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.repository.ProjectRepository;
+import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,10 @@ public class ProjectService {
 
     public List<Project> getProjects() {
         return _projectRepository.getProjects();
+    }
+
+    public Optional<Project> getProject(String name) {
+        return _projectRepository.getProjectByName(name);
     }
 
 }

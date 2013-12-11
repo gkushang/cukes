@@ -3,7 +3,9 @@ package com.cukesrepo.controller;
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.page.FeaturesPage;
 import com.cukesrepo.page.ProjectsPage;
+import com.cukesrepo.service.EmailService;
 import com.cukesrepo.service.FeatureService;
+import com.cukesrepo.service.ProjectService;
 import org.apache.commons.lang.Validate;
 import org.rendersnake.HtmlCanvas;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,33 +24,24 @@ import static org.rendersnake.HtmlAttributesFactory.for_;
 public class FeaturesPageController {
 
     public FeatureService _featureService;
+    public ProjectService _projectService;
+    public EmailService _emailService;
 
 
     @Autowired
-    public FeaturesPageController(FeatureService featureService) {
+    public FeaturesPageController(FeatureService featureService,ProjectService projectService,EmailService emailService) {
         Validate.notNull(featureService, "featureService cannot be null");
 
         _featureService = featureService;
+        _projectService = projectService;
+        _emailService=emailService;
 
     }
-
-//    @RequestMapping(value = {"/projects/{projectName}/"}, method = RequestMethod.GET)
-//    protected ModelAndView featuresPage
-//            (
-//                    @PathVariable String projectName
-//            ) {
-//
-//        ModelAndView model = new ModelAndView("FeaturesPage");
-//
-//        model.addObject("features", _featureService.fetch(projectName));
-//
-//        return model;
-//    }
 
     @RequestMapping(value = {"/projects/{projectName}/"})
     @ResponseBody
     public void featurespage(HtmlCanvas html, @PathVariable String projectName) throws IOException {
-        html.render(new SiteLayoutWrapper(new FeaturesPage(_featureService,projectName)));
+        html.render(new FeaturesPage(_featureService,_projectService,_emailService,projectName));
 
 
     }

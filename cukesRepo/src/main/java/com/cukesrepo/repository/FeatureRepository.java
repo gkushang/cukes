@@ -68,7 +68,6 @@ public class FeatureRepository {
     }
 
     public void approveScenario(String featureId, String scenarioId) {
-        //TODO - add code for approval
 
     }
 
