@@ -1,8 +1,9 @@
 package com.cukesrepo.component;
 
 
-import com.cukesrepo.Exceptions.FeatureNotFoundException;
-import com.cukesrepo.Exceptions.ScenariosNotFoundException;
+import com.cukesrepo.exceptions.FeatureNotFoundException;
+import com.cukesrepo.exceptions.ScenariosNotFoundException;
+import com.cukesrepo.domain.Example;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.domain.Scenario;
@@ -26,9 +27,9 @@ import java.util.List;
 
 @Component
 public class GitComponent {
+
     private final String FEATURE_FILE_EXTENSION = ".feature";
     private final String _featureFilePath;
-
 
     private static final Logger LOG = LoggerFactory.getLogger(GitComponent.class);
 
@@ -44,16 +45,22 @@ public class GitComponent {
     }
 
     public List<Feature> fetchFeatures(Project project) throws FeatureNotFoundException {
+
         //TODO - Replace by GitHub code
+
+        LOG.info("Fetching features from Git/Local repository for the project '{}'", project.getName());
 
         String featureFileAbsolutePath = _getFeaturesAbsolutePath(project);
 
         List<Feature> features = new ArrayList<>();
 
         for (File file : _findAllFeatureFiles(featureFileAbsolutePath)) {
+
             Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
 
             feature.setProjectName(project.getName());
+
+            feature.setTotalScenarios(getTotalScenarios(feature));
 
             features.add(feature);
         }
@@ -67,7 +74,23 @@ public class GitComponent {
     }
 
 
+    public int getTotalScenarios(Feature feature) {
+
+        int scenarioCount = 0;
+
+        for (Scenario scenario : feature.getScenarios()) {
+            for (Example example : scenario.getExamples()) {
+                scenarioCount += example.getRows().size() - 2;
+            }
+
+            scenarioCount++;
+        }
+        return scenarioCount;
+    }
+
     public List<Scenario> fetchScenarios(Project project, String featureId) throws ScenariosNotFoundException {
+
+        LOG.info("Fetching scenarios from Git for the project '{}' and Feature '{}'", project.getName(), featureId);
 
         String featureFileAbsolutePath = _getFeaturesAbsolutePath(project);
 

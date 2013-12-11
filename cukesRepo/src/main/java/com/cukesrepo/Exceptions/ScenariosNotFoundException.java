@@ -1,4 +1,4 @@
-package com.cukesrepo.Exceptions;
+package com.cukesrepo.exceptions;
 
 public class ScenariosNotFoundException extends Exception {
 

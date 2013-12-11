@@ -1,6 +1,6 @@
-package com.cukesrepo.repository;
+package com.cukesrepo.repository.project;
 
-
+import com.cukesrepo.exceptions.ProjectNotFoundException;
 import com.cukesrepo.domain.Project;
 import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class ProjectRepository {
+public class ProjectRepositoryImpl implements ProjectRepository {
 
     private final MongoTemplate _mongoTemplate;
     private List<Project> _projects = new ArrayList<>();
@@ -24,7 +24,7 @@ public class ProjectRepository {
     private static final Logger LOG = LoggerFactory.getLogger(ProjectRepository.class);
 
     @Autowired
-    public ProjectRepository(MongoTemplate mongoTemplate) {
+    public ProjectRepositoryImpl(MongoTemplate mongoTemplate) {
 
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
 
@@ -40,7 +40,7 @@ public class ProjectRepository {
         return _projects;
     }
 
-    public Optional<Project> getProjectByName(String projectName) {
+    public Optional<Project> getProjectByName(String projectName) throws ProjectNotFoundException {
 
         Query query = new Query(Criteria.where(Project.NAME).is(projectName));
 
@@ -48,9 +48,12 @@ public class ProjectRepository {
 
         LOG.info("Project '{}' found from db", projectName);
 
-        return Optional.fromNullable(project);
+        Optional<Project> projectOptional = Optional.fromNullable(project);
+
+        if (projectOptional.isPresent())
+            return projectOptional;
+
+        throw new ProjectNotFoundException("Project '" + projectName + "' not found in db");
     }
 
 }
-
-
