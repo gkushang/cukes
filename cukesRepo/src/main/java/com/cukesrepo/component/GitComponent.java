@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilenameFilter;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,20 +117,20 @@ public class GitComponent {
 
         return project.getRepositoryPath() + _featureFilePath;
     }
-
-    private File[] _findAllFeatureFiles(String directoryPath) {
-
-        File dir = new File(directoryPath);
-
-        return
-                dir.listFiles
-                        (new FilenameFilter() {
-                            public boolean accept(File dir, String filename) {
-                                return filename.endsWith(FEATURE_FILE_EXTENSION);
-                            }
-                        }
-                        );
-    }
+//
+//    private File[] _findAllFeatureFiles(String directoryPath) {
+//
+//        File dir = new File(directoryPath);
+//
+//        return
+//                dir.listFiles
+//                        (new FilenameFilter() {
+//                            public boolean accept(File dir, String filename) {
+//                                return filename.endsWith(FEATURE_FILE_EXTENSION);
+//                            }
+//                        }
+//                        );
+//    }
 
     private Feature _convertFeatureFileToPOJO(String path) {
 
@@ -159,6 +158,45 @@ public class GitComponent {
 
         } catch (Exception e) {
             throw new RuntimeException("Error in parsing feature file to Json : " + path, e);
+        }
+
+    }
+
+    public List<File> _findAllFeatureFiles(String directoryPath) {
+
+        List<File> files = new ArrayList<>();
+
+        File directory = new File(directoryPath);
+
+        if (directory.isDirectory()) {
+            search(directory, files);
+        }
+
+        return files;
+    }
+
+    private void search(File file, List<File> files) {
+
+        if (file.isDirectory()) {
+            LOG.info("Searching feature files in directory '{}'", file.getAbsolutePath());
+
+            if (file.canRead()) {
+
+                for (File rFile : file.listFiles()) {
+
+                    if (rFile.isDirectory()) {
+                        search(rFile, files);
+                    } else {
+                        if (rFile.getName().endsWith(FEATURE_FILE_EXTENSION)) {
+                            files.add(rFile);
+                        }
+
+                    }
+                }
+
+            } else {
+                LOG.warn("You do not have permission to access the directory '{}'", file.getAbsolutePath());
+            }
         }
 
     }

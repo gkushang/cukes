@@ -40,7 +40,7 @@ public class Feature {
     private float totalApprovedScenarios = 0;
 
     @Field(STATUS)
-    private String status;
+    private String status = FeatureStatus.NEED_REVIEW.get();
 
     @Field("emailsent")
     private Boolean emailSent = false;
