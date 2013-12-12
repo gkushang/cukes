@@ -1,9 +1,9 @@
 package com.cukesrepo.service.feature;
 
-import com.cukesrepo.exceptions.FeatureNotFoundException;
-import com.cukesrepo.exceptions.ProjectNotFoundException;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.Project;
+import com.cukesrepo.exceptions.FeatureNotFoundException;
+import com.cukesrepo.exceptions.ProjectNotFoundException;
 import com.cukesrepo.repository.feature.FeatureRepository;
 import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
@@ -44,7 +44,7 @@ public class FeatureServiceImpl implements FeatureService {
 
         Validate.notEmpty(featureId, "featureId cannot be empty or null");
 
-        Optional<Feature> feature = _featureRepository.getFeatureName(projectName, featureId);
+        Optional<Feature> feature = _featureRepository.getFeatureById(projectName, featureId);
 
         if (feature.isPresent()) {
 
@@ -56,6 +56,13 @@ public class FeatureServiceImpl implements FeatureService {
             LOG.error("Feature not found by id '{}'", featureId);
             throw new FeatureNotFoundException("Feature '" + featureId + "' not found");
         }
+    }
+
+    @Override
+    public void setEmailSent(String projectName, String featureId) throws FeatureNotFoundException, ProjectNotFoundException {
+
+        _featureRepository.setEmailSentAndStatus(projectName, featureId);
+
     }
 
 }
