@@ -1,9 +1,10 @@
-package com.cukesrepo.service;
+package com.cukesrepo.service.feature;
 
-import com.cukesrepo.Exceptions.FeatureNotFoundException;
-import com.cukesrepo.Exceptions.ProjectNotFoundException;
 import com.cukesrepo.domain.Feature;
-import com.cukesrepo.repository.FeatureRepository;
+import com.cukesrepo.domain.Project;
+import com.cukesrepo.exceptions.FeatureNotFoundException;
+import com.cukesrepo.exceptions.ProjectNotFoundException;
+import com.cukesrepo.repository.feature.FeatureRepository;
 import com.google.common.base.Optional;
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
@@ -14,25 +15,28 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FeatureService {
+public class FeatureServiceImpl implements FeatureService {
+
     private FeatureRepository _featureRepository;
 
     private static final Logger LOG = LoggerFactory.getLogger(FeatureService.class);
 
-
     @Autowired
-    public FeatureService(FeatureRepository featureRepository) {
+    public FeatureServiceImpl
+            (
+                    FeatureRepository featureRepository
+            ) {
 
         Validate.notNull(featureRepository, "featureRepository cannot be null");
 
         _featureRepository = featureRepository;
     }
 
-    public List<Feature> fetchFeatures(String projectName) throws FeatureNotFoundException, ProjectNotFoundException {
+    public List<Feature> fetchFeatures(Project project) throws FeatureNotFoundException, ProjectNotFoundException {
 
-        Validate.notEmpty(projectName, "projectName cannot be null");
+        Validate.notNull(project, "project cannot be null");
 
-        return _featureRepository.fetchFeatures(projectName);
+        return _featureRepository.fetchFeatures(project);
 
     }
 
@@ -40,7 +44,7 @@ public class FeatureService {
 
         Validate.notEmpty(featureId, "featureId cannot be empty or null");
 
-        Optional<Feature> feature = _featureRepository.getFeatureName(projectName, featureId);
+        Optional<Feature> feature = _featureRepository.getFeatureById(projectName, featureId);
 
         if (feature.isPresent()) {
 
@@ -52,6 +56,13 @@ public class FeatureService {
             LOG.error("Feature not found by id '{}'", featureId);
             throw new FeatureNotFoundException("Feature '" + featureId + "' not found");
         }
+    }
+
+    @Override
+    public void setEmailSent(String projectName, String featureId) throws FeatureNotFoundException, ProjectNotFoundException {
+
+        _featureRepository.setEmailSentAndStatus(projectName, featureId);
+
     }
 
 }

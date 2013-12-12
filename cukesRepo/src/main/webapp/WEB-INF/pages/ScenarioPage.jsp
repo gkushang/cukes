@@ -90,6 +90,20 @@ body {
 	font-size: 14px;
 }
 
+.comment-heading {
+	color: black;
+	text-align: left;
+	font-size: 14px;
+	font-weight:bold;
+}
+
+.comment-data {
+	color: black;
+	text-align: left;
+	font-size: 14px;
+    font-weight:italic;
+}
+
 </style>
 
 <body>
@@ -119,11 +133,13 @@ body {
                         <span class="step-name">| ${cell} |</span> <br>
                     </c:forEach>
                 </c:forEach>
+
             </c:forEach>
 
-            <br>
+
 
                 <c:forEach var="example" items="${scenario.examples}">
+                <br>
                     <span class="example-keyword">${example.keyword}</span>
                     <span class="example-keyword">: </span>
                     <span class="example-name">${example.name}</span>
@@ -136,11 +152,27 @@ body {
                                 </c:forEach>
                         </c:forEach>
                      </table>
+
+
                 </c:forEach>
 
 
-            <br><br>
 
+
+
+                <c:forEach var="comment" items="${scenario.comments}">
+                    <br> <span class="comment-heading">Comment:</span>
+                    <span class="comment-data">"${comment}"</span> <br>
+                </c:forEach>
+                 <c:set var="endpoint" value="${scenario.number}/comments/" />
+                                     <FORM ACTION=${endpoint} METHOD="POST">
+                                     <c:set var="endpoint" value="" />
+
+                     <br>
+                     <input type="TEXT" style="width:1000px;height:30px;" name=text${scenario.number} value=${scenario.number}>
+                     <input type="SUBMIT" value="Add Comment">
+
+                <br><br><br><br>
         </c:forEach>
 
 </body>

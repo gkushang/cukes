@@ -28,6 +28,7 @@ public class Feature {
 
     public static final String PROJECTNAME = "projectname";
     public static final String ID = "_id";
+    private static final String STATUS = "status";
 
     @Field(PROJECTNAME)
     private String projectName;
@@ -36,7 +37,14 @@ public class Feature {
     private int totalScenarios = 0;
 
     @Field("totalapprovedscenarios")
-    private int totalApprovedScenarios = 0;
+    private float totalApprovedScenarios = 0;
+
+    @Field(STATUS)
+    private String status;
+
+    @Field("emailsent")
+    private Boolean emailSent;
+
 
     @JsonProperty("id")
     @Field(ID)
@@ -154,11 +162,11 @@ public class Feature {
         return this.totalScenarios;
     }
 
-    public void setTotalApprovedScenarios(int totalApprovedScenarios) {
+    public void setTotalApprovedScenarios(float totalApprovedScenarios) {
         this.totalApprovedScenarios = totalApprovedScenarios;
     }
 
-    public int getTotalApprovedScenarios() {
+    public float getTotalApprovedScenarios() {
         return totalApprovedScenarios;
     }
 
@@ -168,6 +176,22 @@ public class Feature {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public Boolean getEmailSent() {
+        return emailSent;
+    }
+
+    public void setEmailSent(Boolean emailSent) {
+        this.emailSent = emailSent;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 }

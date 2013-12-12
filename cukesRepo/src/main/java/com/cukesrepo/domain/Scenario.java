@@ -34,6 +34,7 @@ public class Scenario {
     public static final String ID = "_id";
     public static final String NAME = "name";
     public static final String NUMBER = "number";
+    public static final String COMMENTS = "comments";
 
     @JsonProperty("id")
     @Field(ID)
@@ -71,6 +72,10 @@ public class Scenario {
     @Field("type")
     private String type;
 
+
+    @Field(COMMENTS)
+    private List<String> comments = new ArrayList<String>();
+
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @Field(APPROVED)
@@ -106,6 +111,14 @@ public class Scenario {
     @JsonProperty("tags")
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<String> comments) {
+        this.comments = comments;
     }
 
     @JsonProperty("description")
