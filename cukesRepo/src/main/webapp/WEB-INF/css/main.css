@@ -1,12 +1,14 @@
 body {
     background-color: #DAF0CD;
 }
+
 .middle-page {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5px;
     width: 1000px;
 }
+
 .fullWidthWrapper {
     height: auto;
 }
@@ -16,19 +18,19 @@ body {
     border: 0px solid #008000;
 }
 
-.bgColorA{
+.bgColorA {
     background-color: #5CBF69;
 }
 
-.bgColorBody{
+.bgColorBody {
     background-color: #DAF0CD;
 }
 
-.bgColorB{
+.bgColorB {
     background-color: #DDDDCE;
 }
 
-.colorDarkGreen{
+.colorDarkGreen {
     color: #008000;
 }
 
@@ -36,64 +38,66 @@ body {
     border: 1px solid #008000;
 }
 
-.pageTitle{
+.pageTitle {
     height: auto;
     width: auto;
 
 }
-.title{
-    font-size:50px;
+
+.title {
+    font-size: 50px;
     color: white;
-    font-family:"Lucida Sans Unicode";
+    font-family: "Lucida Sans Unicode";
 }
-.userName{
+
+.userName {
     color: #ffffff;
 
 }
+
 .twoDivEqualHalf {
     width: 48.6%;
     display: inline-block;
     margin-top: 6px;
     margin-bottom: auto;
     text-align: center;
-    height: 375px;  /* will be to auto later */
+    height: 375px; /* will be to auto later */
     margin-left: 12px;
     -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
 }
 
-.whiteFont{
+.whiteFont {
     color: #ffffff;
 }
 
 .myButton {
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:arial;
-    font-size:13px;
-    font-weight:bold;
-    /*padding:19px 45px;*/
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: arial;
+    font-size: 13px;
+    font-weight: bold;
     padding-right: 50px;
-
-    text-decoration:none;
-    text-shadow:0px 1px 0px #2f6627;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #2f6627;
     margin-left: 43px;
-    margin-top:49px;
-    float:right;
+    margin-top: 49px;
+    float: right;
     width: 10px;
 }
+
 .myButton:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
 
-.inlineBlock{
+.inlineBlock {
     display: inline-block;
 }
 
-.floatRight{
-    float:right;
+.floatRight {
+    float: right;
 }
 
 
