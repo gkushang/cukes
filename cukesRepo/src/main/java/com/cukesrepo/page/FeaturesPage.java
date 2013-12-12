@@ -1,7 +1,9 @@
 package com.cukesrepo.page;
 
 import com.cukesrepo.domain.Feature;
+
 import com.cukesrepo.domain.FeatureStatus;
+
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.domain.Scenario;
 import com.cukesrepo.exceptions.FeatureNotFoundException;
@@ -63,7 +65,9 @@ public class FeaturesPage implements Renderable {
 
         html
                 .body();
+
         html.div(id("secondpage"));
+
         html.h4().span().content(_project.getName())._h4();
 
         html.table(id("customers"))
@@ -77,6 +81,7 @@ public class FeaturesPage implements Renderable {
                 html.input(type("hidden").id("projectName").value(_project.getName()));
                     html.tr().td().a(href("")).span().content(feature.getName())._a()._td()
                             .td().span().content(Integer.toString(feature.getTotalScenarios()))._td()
+
                            .td().span().content(Float.toString(feature.getTotalApprovedScenarios()))._td()
                             .td().span().content("good/bad")._td()
                             .td().span().content(feature.getStatus())._td();
@@ -102,10 +107,14 @@ public class FeaturesPage implements Renderable {
         } catch (ProjectNotFoundException e) {
             e.printStackTrace();
         }
+
 html.tfoot().tr().td().content("Total No of scenarios").td().content(Integer.toString(cumulativeScenarios)).td().content("").td().content("").td().content("").td().content("")._tr()._tfoot();
         html ._table();
 
 html._div();
+
+
+
         html._body();
 
     }

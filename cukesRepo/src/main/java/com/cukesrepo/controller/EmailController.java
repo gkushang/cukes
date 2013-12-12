@@ -1,8 +1,10 @@
 package com.cukesrepo.controller;
 
 
+
 import com.cukesrepo.exceptions.FeatureNotFoundException;
 import com.cukesrepo.exceptions.ProjectNotFoundException;
+
 import com.cukesrepo.service.email.EmailService;
 import com.cukesrepo.service.feature.FeatureService;
 import com.cukesrepo.service.project.ProjectService;
@@ -42,6 +44,7 @@ public class EmailController {
         String emailSubject="Review request for "+feature+" feature in "+project;
         String emailBody = "Hi the link is http://localhost:8800/projects/"+project+"/"+feature+"/";
 
+
         String email = _emailService.send(toEmailAddress, emailSubject, emailBody);
         try {
             _featureService.setEmailSent(project, feature);
@@ -50,6 +53,10 @@ public class EmailController {
         } catch (ProjectNotFoundException e) {
             e.printStackTrace();
         }
+
+        System.out.print("I am here"+feature);
+        String email = _emailService.send(toEmailAddress, emailSubject, emailBody);
+
 
 
     }
