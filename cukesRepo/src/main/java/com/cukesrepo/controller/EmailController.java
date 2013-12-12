@@ -54,9 +54,6 @@ public class EmailController {
             e.printStackTrace();
         }
 
-        System.out.print("I am here"+feature);
-        String email = _emailService.send(toEmailAddress, emailSubject, emailBody);
-
 
 
     }

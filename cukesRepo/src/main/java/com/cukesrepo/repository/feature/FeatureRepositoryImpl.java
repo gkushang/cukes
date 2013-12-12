@@ -1,6 +1,5 @@
 package com.cukesrepo.repository.feature;
 
-import com.cukesrepo.component.FeatureComponent;
 import com.cukesrepo.component.GitComponent;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.FeatureStatus;
@@ -28,26 +27,22 @@ public class FeatureRepositoryImpl implements FeatureRepository {
     private final ScenarioRepository _scenarioRepository;
 
     private static final Logger LOG = LoggerFactory.getLogger(FeatureRepositoryImpl.class);
-    private final FeatureComponent _featureComponent;
 
     @Autowired
     public FeatureRepositoryImpl
             (
                     GitComponent gitComponent,
                     ScenarioRepository scenarioRepository,
-                    FeatureComponent featureComponent,
                     MongoTemplate mongoTemplate
             ) {
 
         Validate.notNull(gitComponent, "gitComponent cannot be null");
         Validate.notNull(scenarioRepository, "scenarioRepository cannot be null");
-        Validate.notNull(featureComponent, "featureComponent cannot be null");
         Validate.notNull(mongoTemplate, "mongoTemplate cannot be null");
 
         _gitComponent = gitComponent;
         _scenarioRepository = scenarioRepository;
         _mongoTemplate = mongoTemplate;
-        _featureComponent = featureComponent;
 
     }
 
@@ -60,17 +55,22 @@ public class FeatureRepositoryImpl implements FeatureRepository {
         List<Feature> gitFeatures = _gitComponent.fetchFeatures(project);
 
 
-        for (Feature gitFeature : gitFeatures) {
+        for (Feature feature : gitFeatures) {
+            LOG.info("_scenarioRepository.getApprovedScenariosFromDB(project.getName(), feature.getId()).size() = {}", _scenarioRepository.getApprovedScenariosFromDB(project.getName(), feature.getId()).size());
+            LOG.info("feature.getTotalScenarios() = {}", feature.getTotalScenarios());
 
-            LOG.info("_scenarioRepository.getApprovedScenariosFromDB(project.getName(), feature.getId()).size() = {}",
-                    _scenarioRepository.getApprovedScenariosFromDB(project.getName(), gitFeature.getId()).size());
-            _featureComponent.updateFeatureAttributes
+            float percentageApproved = Math.round(_getPercentageOfApprovedScenarios(project, feature));
+
+            feature.setTotalApprovedScenarios
                     (
-                            project,
-                            gitFeature,
-                            getFeatureById(project.getName(), gitFeature.getId()).get(),
-                            _scenarioRepository.getApprovedScenariosFromDB(project.getName(), gitFeature.getId()).size()
+                            percentageApproved
                     );
+
+            if (percentageApproved >= 100)
+                feature.setStatus(FeatureStatus.APPROVED.get());
+            else
+                feature.setStatus(percentageApproved <= 0 ? FeatureStatus.NEED_REVIEW.get() : FeatureStatus.UNDER_REVIEW.get());
+
 
         }
         _mongoTemplate.remove
@@ -87,19 +87,23 @@ public class FeatureRepositoryImpl implements FeatureRepository {
 
     }
 
+    private float _getPercentageOfApprovedScenarios(Project project, Feature feature) {
 
-    public Optional<Feature> getFeatureById(String projectName, String featureId) throws FeatureNotFoundException {
+        if (feature.getTotalScenarios() != 0)
+            return ((float) _scenarioRepository.getApprovedScenariosFromDB(project.getName(), feature.getId()).size()
+                    /
+                    (float) feature.getTotalScenarios()) * 100;
+        else
+            return 0;
+    }
 
-        Query query = new Query((Criteria.where(Feature.ID).is(featureId)).and(Feature.PROJECTNAME).is(projectName));
+    public Optional<Feature> getFeatureById(String projectName, String id) {
 
-        LOG.info("Get feature name for featureId '{}' and Project '{}'", featureId, projectName);
+        Query query = new Query((Criteria.where(Feature.ID).is(id)).and(Feature.PROJECTNAME).is(projectName));
 
-        Optional<Feature> featureOptional = Optional.fromNullable(_mongoTemplate.findOne(query, Feature.class));
+        LOG.info("Get feature name for featureId '{}' and Project '{}'", id, projectName);
 
-        if (featureOptional.isPresent())
-            return featureOptional;
-
-        throw new FeatureNotFoundException("Feature " + featureId + " not found");
+        return Optional.fromNullable(_mongoTemplate.findOne(query, Feature.class));
     }
 
     @Override
@@ -111,9 +115,7 @@ public class FeatureRepositoryImpl implements FeatureRepository {
             Feature feature = featureOptional.get();
             feature.setStatus(FeatureStatus.UNDER_REVIEW.get());
             feature.setEmailSent(true);
-            _mongoTemplate.remove(feature);
-            _mongoTemplate.insert(feature);
-            LOG.info("Email status set to true for feature '{}'", featureId);
+
         } else
             throw new FeatureNotFoundException("Feature " + featureId + " was not found");
 
