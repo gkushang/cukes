@@ -8,12 +8,58 @@ body
 	line-height: 1.6em;
 	background: #DAF0CD
 }
+.scenario_links{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 16px;
+	color: #2C2CB4;
+	/*border-top: 1px solid #fff;*/
+
+	background: #DAF0CD repeat-x;
+	text-align: left;
+}
+.top
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	float:right;
+	background: #DAF0CD repeat-x;
+}
+.top:hover {
+	background:#27D36C;
+}
+.keyword
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	display: block;
+
+	text-align: left;
+/*	border-collapse: collapse;
+	border-bottom: 1px solid #fff;*/
+	color: #2C2CB4;
+/*	border-top: 1px solid #fff;*/
+	background: #DAF0CD repeat-x;
+}
+div[class^=sclinks]
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 14px;
+	display: block;
+
+	text-align: left;
+/*	border-collapse: collapse;
+	border-bottom: 1px solid #fff;*/
+	color: #669;
+/*	border-top: 1px solid #fff;*/
+	background: #DAF0CD repeat-x;
+}
+
 .ptag, .ctag
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 14px;
 	display: block;
-	
+
 	text-align: left;
 /*	border-collapse: collapse;
 	border-bottom: 1px solid #fff;*/
@@ -21,12 +67,25 @@ body
 	border-top: 1px solid #fff;
 	background: #DAF0CD repeat-x;
 }
-
-.scenario,.feature
+.scenario, .example, .scenario_description
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 16px;
-	padding-left:2cm;
+	padding-left:1cm;
+	padding-right:10cm;
+	text-align: left;
+	display: block;
+   /* border-collapse: collapse;
+	border-bottom: 1px solid #fff;*/
+	color: #2C2CB4;
+	border-top: 1px solid #fff;
+	background: #A8DB88 repeat-x;
+}
+.feature
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 16px;
+	padding-left:1cm;
 	padding-right:10cm;
 	text-align: left;
 	display: block;
@@ -40,9 +99,17 @@ body
 {
 	top:10px;
 	left:201px;
+	position:absolute;
+
+}
+
+#main-low
+{
+	top:180px;
+	left:260;
 	display: inline-block;
 	position:absolute;
-	
+
 }
 .step
 {
@@ -61,17 +128,31 @@ body
 	color: #339;
 }
 
-#gradient-style
+.datatable
 {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
-	position:relative;left:150px
+	position:relative;
+	left:70px;
 	margin: 10px;
-	width: 480px;
+	/*width: 480px;*/
+
 	text-align: left;
 	border-collapse: collapse;
 }
-#gradient-style th
+.example_data
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	position:relative;
+	left:30px;
+	margin: 10px;
+	/*width: 480px;*/
+
+	text-align: left;
+	border-collapse: collapse;
+}
+.example_data th, .datatable th
 {
 	font-size: 13px;
 	font-weight: normal;
@@ -80,22 +161,24 @@ body
 	border-top: 2px solid #d3ddff;
 	border-bottom: 1px solid #fff;
 	color: #039;
+	width:70px;
 }
-#gradient-style td
+.example_data td, .datatable td
 {
-	padding: 8px; 
+	padding: 8px;
 	border-bottom: 1px solid #fff;
 	color: #669;
 	border-top: 1px solid #fff;
 	background: #E1F6D3 repeat-x;
+	width:70px;
 }
-#gradient-style tfoot tr td
+.example_data tfoot tr td, .datatable tfoot tr td
 {
 	background: #E1F6D3;
 	font-size: 12px;
 	color: #686874;
 }
-#gradient-style tbody tr:hover td
+.example_data tbody tr:hover td,.datatable tbody tr:hover td
 {
 	background: #9FF1CA repeat-x;
 	color: #339;
@@ -103,11 +186,11 @@ body
 #cssmenu {
   background: #A8DB88;
   list-style: none;
-  
+
   margin: 0;
   padding: 0;
-  width: 20em;
-  overflow-x:auto;
+  width: 12em;
+  /*overflow-x:auto;*/
   overflow-y:auto;
   /*height:12em;*/
 }
@@ -117,7 +200,7 @@ body
   margin: 0;
   padding: 0;
   list-style: none;
-  
+
 }
 hr.vertical
 {
@@ -126,7 +209,7 @@ hr.vertical
     border-right: 1px solid #FFF9F9;
    position:absolute;
    /*color: #FFF9F9;*/
-   left:22.4em;
+   left:12.4em;
    top:0em;
 /*   display:inline-block;*/
 } 
@@ -253,6 +336,12 @@ width:100%;
 background-color:#A7C942;
 }
 
+.full-height
+{
+width:200px;
+height:auto;
+background-color:#A7C942;
+}
 
 ul
 {
@@ -309,4 +398,17 @@ text-align:center;
 .bgColorA{
 padding:20px;
     background-color: #5CBF69;
+}
+a.full-h
+{
+width:100%;
+background-color:#A7C942;
+font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+display:inline-block;
+width:120px;
+font-weight:bold;
+color:#FFFFFF;
+padding:10px;
+text-decoration:none;
+
 }

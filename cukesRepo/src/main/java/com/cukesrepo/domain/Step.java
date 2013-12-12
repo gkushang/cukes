@@ -3,6 +3,7 @@ package com.cukesrepo.domain;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.Generated;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class Step {
     @JsonProperty("line")
     private Integer line;
     @JsonProperty("rows")
-    private List<Row> rows;
+    private List<Row> rows = new ArrayList<>();
 
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

@@ -1,6 +1,7 @@
 package com.cukesrepo.domain;
 
 import com.fasterxml.jackson.annotation.*;
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -15,6 +16,7 @@ import java.util.Map;
 @Generated("com.googlecode.jsonschema2pojo")
 @JsonPropertyOrder({
         "id",
+        "tags",
         "description",
         "name",
         "keyword",
@@ -48,6 +50,9 @@ public class Feature {
     @JsonProperty("id")
     @Field(ID)
     private String id;
+
+    @JsonProperty("tags")
+    private List<Tag> tags = new ArrayList<Tag>();
 
     @JsonProperty("description")
     @Field("description")
@@ -148,6 +153,16 @@ public class Feature {
         return this.additionalProperties;
     }
 
+    @JsonProperty("tags")
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    @JsonProperty("tags")
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
     @JsonAnySetter
     public void setAdditionalProperties(String name, Object value) {
         this.additionalProperties.put(name, value);
@@ -191,6 +206,10 @@ public class Feature {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 
 }
