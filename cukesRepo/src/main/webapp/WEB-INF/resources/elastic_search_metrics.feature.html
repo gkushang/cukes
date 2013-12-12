@@ -1,1 +1,23 @@
-<head><script type="text/javascript" src="canvasjs.min.js"></script><script type="text/javascript" src="firstword.js"></script><script type="text/javascript" src="jquery-1.10.2.min.js"></script><link type="text/css" href="style1.css" rel="stylesheet"/><link type="text/css" href="sprites.css" rel="stylesheet"/></head><body><div id="cssmenu"><li><a href=""><span>[elastic_search_metrics] Metrics dashboard should reflect correct metrics from elastic search records</span></a></li></div><hr class="vertical"/><div id="scenario0"><span class="ptag">@metrics @test </span><span class="feature">[elastic_search_metrics] Metrics dashboard should reflect correct metrics from elastic search records</span><span class="ptag">@store_elastic_count </span><span class="scenario">[store_elastic_count] Query to make sure that stores in elastic search match in the dashboard tool</span><span class="step">Given I search the elastic search for &quot;&lt;store_type&gt;&quot; stores</span><span class="step">When I retrieve &quot;elastic&quot; &quot;&lt;store_type&gt;&quot; field from metrics dashboard</span><span class="step">Then both elastic search raw count and dashboard count match</span><span class="ptag">@missing_elastic_fields </span><span class="scenario">[missing_elastic_fields] Make sure that all stores with missing fields from elastic search match dashboard metrics</span><span class="step">Given I search the elastic search for &quot;missing&quot; field &quot;&lt;elastic_search_field&gt;&quot;</span><span class="step">When I retrieve &quot;elastic&quot; &quot;&lt;dashboard_field&gt;&quot; field from metrics dashboard</span><span class="step">Then both elastic search raw count and dashboard count match</span></div></body>
+<head>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
+    <script type="text/javascript" src="firstword.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+    <link type="text/css" href="style1.css" rel="stylesheet"/>
+    <link type="text/css" href="sprites.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="cssmenu">
+    <li><a href=""><span>[elastic_search_metrics] Metrics dashboard should reflect correct metrics from elastic search records</span></a>
+    </li>
+</div>
+<hr class="vertical"/>
+<div id="scenario0"><span class="ptag">@metrics @test </span><span class="feature">[elastic_search_metrics] Metrics dashboard should reflect correct metrics from elastic search records</span><span
+        class="ptag">@store_elastic_count </span><span class="scenario">[store_elastic_count] Query to make sure that stores in elastic search match in the dashboard tool</span><span
+        class="step">Given I search the elastic search for &quot;&lt;store_type&gt;&quot; stores</span><span
+        class="step">When I retrieve &quot;elastic&quot; &quot;&lt;store_type&gt;&quot; field from metrics dashboard</span><span
+        class="step">Then both elastic search raw count and dashboard count match</span><span class="ptag">@missing_elastic_fields </span><span
+        class="scenario">[missing_elastic_fields] Make sure that all stores with missing fields from elastic search match dashboard metrics</span><span
+        class="step">Given I search the elastic search for &quot;missing&quot; field &quot;&lt;elastic_search_field&gt;&quot;</span><span
+        class="step">When I retrieve &quot;elastic&quot; &quot;&lt;dashboard_field&gt;&quot; field from metrics dashboard</span><span
+        class="step">Then both elastic search raw count and dashboard count match</span></div>
+</body>

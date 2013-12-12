@@ -48,7 +48,34 @@ public class FeaturesPage implements Renderable {
         int alternate = 0;
 
         html
-                .body();
+                .body()
+        .div(class_("fullWidthWrapper bgColorA"))
+                .div(class_("pageTitle"))
+                .span(class_("title"))
+                .content("CUKESREPO")
+                ._div()
+                ._div()
+
+                .div(class_("full-length"))
+                .ul()
+                .li()
+                .a(href("#home").class_("full"))
+                .content("Home")
+                ._li()
+                .li()
+                .a(href("#news").class_("full"))
+                .content("News")
+                ._li()
+                .li()
+                .a(href("#contact").class_("full"))
+                .content("Contact")
+                ._li()
+                .li()
+                .a(href("#about").class_("full"))
+                .content("About")
+                ._li()
+                ._ul()
+                ._div();
 
         html.div(id("secondpage"));
 

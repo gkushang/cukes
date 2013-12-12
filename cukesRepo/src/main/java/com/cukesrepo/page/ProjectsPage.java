@@ -29,63 +29,52 @@ public class ProjectsPage implements Renderable {
                 .macros().javascript("/../../resources/email.js")
                 .macros().javascript("/../../resources/canvasjs.min.js").macros()
                 .javascript("/../../resources/firstword.js").macros()
-                .stylesheet("/../../resources/style1.css").macros().stylesheet("/../../resources/sprites.css").macros().stylesheet("/../../resources/main.css")._head();
+                .stylesheet("/../../resources/style1.css").macros().stylesheet("/../../resources/sprites.css")._head();
     }
 
 
     @Override
     public void renderOn(HtmlCanvas html) throws IOException {
         addScriptsAndStyleSheets(html);
-        html
+        html.html()
                 .body()
-                .div(class_("middle-page"))
-                .span(class_("colorDarkGreen"))
-                .content("Welcome, K.Gajjar")
-                .span(class_("floatRight colorDarkGreen"))
-                .content("Logout")
-                ._div()
                 .div(class_("fullWidthWrapper bgColorA"))
-                .div(class_("middle-page"))
                 .div(class_("pageTitle"))
                 .span(class_("title"))
-                .content("cukesRepo")
-                .a(href("#").class_("myButton"))
-                .content("Settings")
-                .a(href("#").class_("myButton"))
-                .content("Dashboard")
-                .a(href("#").class_("myButton"))
-                .content("Home")
+                .content("CUKESREPO")
                 ._div()
                 ._div()
-                ._div()
-                .div(class_("fullWidthWrapper"))
-                .div(class_("middle-page"))
-                .div(id("projectList").class_("twoDivEqualHalf roundBorder"))
-                .span(class_("whiteFont"));
-        for (int i = 0; i < _projectService.getProjects().size(); i++) {
-            html.br();
-            html.a(href("")).content(_projectService.getProjects().get(i).getName());
-        }
-        html._span()._div()
-                .div(id("extraList").class_("twoDivEqualHalf roundBorder"))
-                .span(class_("whiteFont"))
-                .content("Something will appear here")
-                ._div()
-                ._div()
-                ._div()
-                .div(class_("fullWidthWrapper bgColorA"))
-                .div(class_("middle-page"))
-                .span(class_("whiteFont"))
-                .content("2013 Cukes Repo")
-                ._div()
-                ._div()
-                ._body()
-        ;
 
-//        for (int i = 0; i < _projectService.getProjects().size(); i++) {
-//            html.br();
-//            html.a(href("")).content(_projectService.getProjects().get(i).getName());
-//        }
+                .div(class_("full-length"))
+                .ul()
+                .li()
+                .a(href("#home").class_("full"))
+                .content("Home")
+                ._li()
+                .li()
+                .a(href("#news").class_("full"))
+                .content("News")
+                ._li()
+                .li()
+                .a(href("#contact").class_("full"))
+                .content("Contact")
+                ._li()
+                .li()
+                .a(href("#about").class_("full"))
+                .content("About")
+                ._li()
+                ._ul()
+                ._div()
+
+        .h3().span().content("Projects:")._h3();
+        for (int i = 0; i < _projectService.getProjects().size(); i++) {
+           html.h1().a(href("")).content(_projectService.getProjects().get(i).getName())._h1();
+        }
+
+               html ._body()
+                .html() ;
+
+
 
     }
 }
