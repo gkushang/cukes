@@ -56,6 +56,7 @@ public class FeaturesPage implements Renderable {
 
     @Override
     public void renderOn(HtmlCanvas html) throws IOException {
+        int cumulativeScenarios=0;
         addScriptsAndStyleSheets(html);
 
 
@@ -101,13 +102,14 @@ public class FeaturesPage implements Renderable {
             for (Feature feature : _featureService.fetchFeatures(_project)) {
                 String featurehidden="feature"+(feature.getId());
                 String emailhidden="emailbutton"+(feature.getId());
+                 cumulativeScenarios =cumulativeScenarios+feature.getTotalScenarios();
                 html.input(type("hidden").id(featurehidden).value(feature.getId()));
                 html.input(type("hidden").id("projectName").value(_project.getName()));
                     html.tr().td().a(href("")).span().content(feature.getName())._a()._td()
                             .td().span().content(Integer.toString(feature.getTotalScenarios()))._td()
                            .td().span().content((Integer.toString(feature.getTotalApprovedScenarios())))._td()
                             .td().span().content("good/bad")._td()
-                            .td().span().content("Submitted")._td()
+                            .td().span().content("submitted")._td()
 
                             //if case needed
                             .td().input(type("button").id(emailhidden).value("Send for Review"))._td()
@@ -118,7 +120,7 @@ public class FeaturesPage implements Renderable {
         } catch (ProjectNotFoundException e) {
             e.printStackTrace();
         }
-
+html.tr().tfoot().content("").tfoot().content(Integer.toString(cumulativeScenarios)).tfoot().content("").tfoot().content("").tfoot().content("");
         html ._table();
 
 
