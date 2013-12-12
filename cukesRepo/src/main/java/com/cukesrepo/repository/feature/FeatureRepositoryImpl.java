@@ -68,7 +68,7 @@ public class FeatureRepositoryImpl implements FeatureRepository {
 
             if (percentageApproved >= 100)
                 feature.setStatus(FeatureStatus.APPROVED.get());
-            else if (feature.getEmailSent())
+            else if (feature.getEmailSent() != null && feature.getEmailSent())
                 feature.setStatus(FeatureStatus.UNDER_REVIEW.get());
             else
                 feature.setStatus(percentageApproved <= 0 ? FeatureStatus.NEED_REVIEW.get() : FeatureStatus.UNDER_REVIEW.get());
