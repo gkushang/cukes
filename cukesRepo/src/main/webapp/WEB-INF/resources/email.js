@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
 
         var me = $(this);
         var id = me.attr('id');
+
         var feature_id = id.replace('emailbutton','');
         var project=$('#projectName').val();
 

@@ -20,6 +20,7 @@ public class ProjectsPage implements Renderable {
         _projectService = projectService;
 
     }
+
     private void addScriptsAndStyleSheets(HtmlCanvas html) throws IOException {
         html.head()
                 .title()
@@ -35,8 +36,8 @@ public class ProjectsPage implements Renderable {
     @Override
     public void renderOn(HtmlCanvas html) throws IOException {
         addScriptsAndStyleSheets(html);
-       html
-               .body()
+        html
+                .body()
                 .div(class_("middle-page"))
                 .span(class_("colorDarkGreen"))
                 .content("Welcome, K.Gajjar")
@@ -65,7 +66,7 @@ public class ProjectsPage implements Renderable {
             html.br();
             html.a(href("")).content(_projectService.getProjects().get(i).getName());
         }
-                html._span()._div()
+        html._span()._div()
                 .div(id("extraList").class_("twoDivEqualHalf roundBorder"))
                 .span(class_("whiteFont"))
                 .content("Something will appear here")
