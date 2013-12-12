@@ -43,8 +43,7 @@ public class Feature {
     private String status;
 
     @Field("emailsent")
-    private Boolean emailSent;
-
+    private Boolean emailSent = false;
 
     @JsonProperty("id")
     @Field(ID)
