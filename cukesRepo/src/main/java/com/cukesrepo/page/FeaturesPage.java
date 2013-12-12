@@ -44,24 +44,24 @@ public class FeaturesPage implements Renderable {
                 .javascript("/../../resources/firstword.js").macros()
                 .stylesheet("/../../resources/style1.css").macros().stylesheet("/../../resources/sprites.css")._head();
     }
-
-    private void addLeftNavigationPane(HtmlCanvas html) throws Throwable {
-        html.div(id("cssmenu"));
-
-        html.li().a(href("")).span().content("test")._a()._li();
-        html.li().a(href("")).span().content("test1")._a()._li();
-        html._div();
-        html.hr(class_("vertical"));
-        html.div(id("cssmenu"));
-
-
-    }
+//
+//    private void addLeftNavigationPane(HtmlCanvas html) throws Throwable {
+//        html.div(id("cssmenu"));
+//
+//        html.li().a(href("")).span().content("test")._a()._li();
+//        html.li().a(href("")).span().content("test1")._a()._li();
+//        html._div();
+//        html.hr(class_("vertical"));
+//        html.div(id("cssmenu"));
+//
+//
+//    }
 
     @Override
     public void renderOn(HtmlCanvas html) throws IOException {
         int cumulativeScenarios=0;
         addScriptsAndStyleSheets(html);
-
+int alternate=0;
 
         html
                 .body();
@@ -74,12 +74,17 @@ public class FeaturesPage implements Renderable {
                 .tr().th().content("Features").th().content("No.of scenarios").th().content("% Approved").th().content("Cuke Sniffer").th().content("Status").th().content("")._tr();
         try {
             for (Feature feature : _featureService.fetchFeatures(_project)) {
+                alternate=alternate+1;
                 String featurehidden="feature"+(feature.getId());
                 String emailhidden="emailbutton"+(feature.getId());
                  cumulativeScenarios =cumulativeScenarios+feature.getTotalScenarios();
                 html.input(type("hidden").id(featurehidden).value(feature.getId()));
                 html.input(type("hidden").id("projectName").value(_project.getName()));
-                    html.tr().td().a(href("")).span().content(feature.getName())._a()._td()
+                if(alternate%2==0)
+                    html.tr(class_("alt"));
+                else
+                html.tr();
+                html.td().a(href("")).span().content(feature.getName())._a()._td()
                             .td().span().content(Integer.toString(feature.getTotalScenarios()))._td()
 
                            .td().span().content(Float.toString(feature.getTotalApprovedScenarios()))._td()
