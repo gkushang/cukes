@@ -1,42 +1,36 @@
 package com.cukesrepo.controller;
 
+import com.cukesrepo.page.ProjectsPage;
 import com.cukesrepo.service.project.ProjectService;
-import org.apache.commons.lang.Validate;
+import org.rendersnake.HtmlCanvas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.IOException;
+
+
+/**
+ * Created by maduraisamy on 12/7/13.
+ */
 
 @Controller
 public class ProjectsPageController {
 
-
     private final ProjectService _projectService;
 
     @Autowired
-    public ProjectsPageController
-            (
-                    ProjectService projectService
-            ) {
-
-        Validate.notNull(projectService, "projectService cannot be null");
-
-        _projectService = projectService;
-
+    public ProjectsPageController(ProjectService _projectService) {
+        this._projectService = _projectService;
     }
 
-    @RequestMapping(value = "/projects/", method = RequestMethod.GET)
-    protected ModelAndView projectsPage
-            (
+    @RequestMapping(value = {"/projects/"})
+    @ResponseBody
+    public void projectspage(HtmlCanvas html) throws IOException {
+        html.render(new ProjectsPage(_projectService));
 
-            ) {
 
-        ModelAndView model = new ModelAndView("ProjectsPage");
-
-        model.addObject("projects", _projectService.getProjects());
-
-        return model;
     }
-
 }
+
