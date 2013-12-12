@@ -1,6 +1,7 @@
 package com.cukesrepo.page;
 
 import com.cukesrepo.domain.Feature;
+import com.cukesrepo.domain.FeatureStatus;
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.domain.Scenario;
 import com.cukesrepo.exceptions.FeatureNotFoundException;
@@ -62,38 +63,7 @@ public class FeaturesPage implements Renderable {
 
         html
                 .body();
-
-//
-//        html.table(id("gradient-style"));
-//        html.tr();
-//        html.td();
-//        html.div(id("cssmenu"));
-//        html.table();
-//        try {
-//            for (Feature feature : _featureService.fetchFeatures(_project)) {
-//                html.tr();
-//                html.td();
-//                System.out.println(feature.getName());
-//                html.a(href("")).span().content(feature.getName())._a();
-//               // html.label().content(Integer.toString(feature.getTotalScenarios()));
-//                html.input(type("hidden").id("feature").value(feature.getId()));
-//                html.input(type("hidden").id("projectName").value(_project.getName()));
-//                // html.input(type("button").id("emailbutton").value("Button"));
-//                html._td();
-//                html._tr();
-//            }
-//        } catch (FeatureNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (ProjectNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        html._table();
-//        html.hr(class_("vertical"));
-//        html._div();
-//        html._td();
-//        html._tr();
-//
-//        html._table();
+        html.div(id("secondpage"));
         html.h4().span().content(_project.getName())._h4();
 
         html.table(id("customers"))
@@ -107,23 +77,35 @@ public class FeaturesPage implements Renderable {
                 html.input(type("hidden").id("projectName").value(_project.getName()));
                     html.tr().td().a(href("")).span().content(feature.getName())._a()._td()
                             .td().span().content(Integer.toString(feature.getTotalScenarios()))._td()
-                           .td().span().content((Integer.toString(feature.getTotalApprovedScenarios())))._td()
+                           .td().span().content(Float.toString(feature.getTotalApprovedScenarios()))._td()
                             .td().span().content("good/bad")._td()
-                            .td().span().content("submitted")._td()
+                            .td().span().content(feature.getStatus())._td();
 
-                            //if case needed
-                            .td().input(type("button").id(emailhidden).value("Send for Review"))._td()
-                            ._tr();
+                            if(feature.getStatus().equalsIgnoreCase(FeatureStatus.APPROVED.get()))
+                            {
+                            html.td().input(type("button").id(emailhidden).value("Send for Review").disabled("Approved"))._td();
+                            }
+
+                if(feature.getStatus().equalsIgnoreCase(FeatureStatus.UNDER_REVIEW.get()))
+                {
+                    html.td().input(type("button").id(emailhidden).value("Resend Email for Review"))._td();
+                }
+                if(feature.getStatus().equalsIgnoreCase(FeatureStatus.NEED_REVIEW.get()))
+                {
+                    html.td().input(type("button").id(emailhidden).value("Send Email for Review"))._td();
+                }
+
+                           html ._tr();
             }
         } catch (FeatureNotFoundException e) {
             e.printStackTrace();
         } catch (ProjectNotFoundException e) {
             e.printStackTrace();
         }
-html.tr().tfoot().content("").tfoot().content(Integer.toString(cumulativeScenarios)).tfoot().content("").tfoot().content("").tfoot().content("");
+html.tfoot().tr().td().content("Total No of scenarios").td().content(Integer.toString(cumulativeScenarios)).td().content("").td().content("").td().content("").td().content("")._tr()._tfoot();
         html ._table();
 
-
+html._div();
         html._body();
 
     }
