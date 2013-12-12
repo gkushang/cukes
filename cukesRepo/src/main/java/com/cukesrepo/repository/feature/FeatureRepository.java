@@ -13,7 +13,7 @@ public interface FeatureRepository {
 
     public List<Feature> fetchFeatures(Project project) throws FeatureNotFoundException, ProjectNotFoundException;
 
-    public Optional<Feature> getFeatureById(String projectName, String id);
+    public Optional<Feature> getFeatureById(String projectName, String id) throws FeatureNotFoundException;
 
     public void setEmailSentAndStatus(String projectName, String featureId) throws FeatureNotFoundException, ProjectNotFoundException;
 }
