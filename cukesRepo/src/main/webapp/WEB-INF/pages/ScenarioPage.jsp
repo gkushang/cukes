@@ -164,7 +164,10 @@ body {
                     <br> <span class="comment-heading">Comment:</span>
                     <span class="comment-data">"${comment}"</span> <br>
                 </c:forEach>
-              <FORM ACTION="${scenario.number}/comments" METHOD="POST">
+                 <c:set var="endpoint" value="${scenario.number}/comments/" />
+                                     <FORM ACTION=${endpoint} METHOD="POST">
+                                     <c:set var="endpoint" value="" />
+
                      <br>
                      <input type="TEXT" style="width:1000px;height:30px;" name=text${scenario.number} value=${scenario.number}>
                      <input type="SUBMIT" value="Add Comment">

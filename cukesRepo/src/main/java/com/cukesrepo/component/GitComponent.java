@@ -1,12 +1,12 @@
 package com.cukesrepo.component;
 
 
-import com.cukesrepo.exceptions.FeatureNotFoundException;
-import com.cukesrepo.exceptions.ScenariosNotFoundException;
 import com.cukesrepo.domain.Example;
 import com.cukesrepo.domain.Feature;
 import com.cukesrepo.domain.Project;
 import com.cukesrepo.domain.Scenario;
+import com.cukesrepo.exceptions.FeatureNotFoundException;
+import com.cukesrepo.exceptions.ScenariosNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gherkin.formatter.JSONFormatter;
 import gherkin.parser.Parser;
@@ -136,6 +136,7 @@ public class GitComponent {
     private Feature _convertFeatureFileToPOJO(String path) {
 
         try {
+
             String gherkin = FixJava.readReader(new InputStreamReader(
                     new FileInputStream(path), "UTF-8"));
 
