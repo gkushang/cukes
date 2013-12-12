@@ -1,10 +1,7 @@
 package com.cukesrepo.component;
 
 
-import com.cukesrepo.domain.Example;
-import com.cukesrepo.domain.Feature;
-import com.cukesrepo.domain.Project;
-import com.cukesrepo.domain.Scenario;
+import com.cukesrepo.domain.*;
 import com.cukesrepo.exceptions.FeatureNotFoundException;
 import com.cukesrepo.exceptions.ScenariosNotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,15 +50,18 @@ public class GitComponent {
 
         List<Feature> features = new ArrayList<>();
 
-        for (File file : _findAllFeatureFiles(featureFileAbsolutePath)) {
+        for (FeatureFile featureFile : _findAllFeatureFiles(featureFileAbsolutePath)) {
 
-            Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
+            Feature feature = _convertFeatureFileToPOJO(featureFile.getFile().getAbsolutePath());
 
             feature.setProjectName(project.getName());
 
             feature.setTotalScenarios(getTotalScenarios(feature));
 
+            feature.setDirectoryName(featureFile.getDirectoryName());
+
             features.add(feature);
+
         }
 
         if (features.size() > 0) LOG.info("Fetched '{}' feature(s) from Git/Local repository", features.size());
@@ -93,8 +93,8 @@ public class GitComponent {
 
         String featureFileAbsolutePath = _getFeaturesAbsolutePath(project);
 
-        for (File file : _findAllFeatureFiles(featureFileAbsolutePath)) {
-            Feature feature = _convertFeatureFileToPOJO(file.getAbsolutePath());
+        for (FeatureFile featureFile : _findAllFeatureFiles(featureFileAbsolutePath)) {
+            Feature feature = _convertFeatureFileToPOJO(featureFile.getFile().getAbsolutePath());
 
             if (feature.getId().equals(featureId)) {
                 int scenarioId = 0;
@@ -162,35 +162,36 @@ public class GitComponent {
 
     }
 
-    public List<File> _findAllFeatureFiles(String directoryPath) {
+    private List<FeatureFile> _findAllFeatureFiles(String directoryPath) {
 
-        List<File> files = new ArrayList<>();
+        List<FeatureFile> featureFiles = new ArrayList<>();
 
         File directory = new File(directoryPath);
 
         if (directory.isDirectory()) {
-            search(directory, files);
+            search(directory, featureFiles);
         }
 
-        return files;
+        return featureFiles;
     }
 
-    private void search(File file, List<File> files) {
+    private void search(File file, List<FeatureFile> featureFiles) {
+
+        String directoryName;
 
         if (file.isDirectory()) {
             LOG.info("Searching feature files in directory '{}'", file.getAbsolutePath());
+            directoryName = file.getName();
 
             if (file.canRead()) {
 
                 for (File rFile : file.listFiles()) {
-
                     if (rFile.isDirectory()) {
-                        search(rFile, files);
+                        search(rFile, featureFiles);
                     } else {
                         if (rFile.getName().endsWith(FEATURE_FILE_EXTENSION)) {
-                            files.add(rFile);
+                            featureFiles.add(new FeatureFile(rFile, directoryName));
                         }
-
                     }
                 }
 

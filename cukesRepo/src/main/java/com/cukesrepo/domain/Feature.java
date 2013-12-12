@@ -64,6 +64,9 @@ public class Feature {
     @JsonProperty("line")
     private Integer line;
 
+    @Field("directoryname")
+    private String directoryName;
+
     @JsonProperty("elements")
     @Transient
     private List<Scenario> scenarios = new ArrayList<Scenario>();
@@ -191,6 +194,14 @@ public class Feature {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDirectoryName() {
+        return directoryName;
+    }
+
+    public void setDirectoryName(String directoryName) {
+        this.directoryName = directoryName;
     }
 
 }
