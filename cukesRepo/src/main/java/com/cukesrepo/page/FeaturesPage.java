@@ -112,9 +112,6 @@ html.tfoot().tr().td().content("Total No of scenarios").td().content(Integer.toS
         html ._table();
 
 html._div();
-
-
-
         html._body();
 
     }
